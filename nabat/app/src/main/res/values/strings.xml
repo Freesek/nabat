@@ -1,0 +1,130 @@
+<resources>
+    <string name="app_name">Набат</string>
+    <string name="reg_str">ПОЗВОНИТЬ\nНА БЕСПЛАТНУЮ\nГОРЯЧУЮ ЛИНИЮ</string>
+    <string name="nabat_str">НАБАТ</string>
+    <string name="NABAT_PHONE_URL">tel:+78002225154</string>
+    <integer name="com_vk_sdk_AppId">5931473</integer>
+    <string name="facebook_app_id">1772183606429290</string>
+    <string name="loginFacebookButton">Войти через фейсбук</string>
+
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="title_activity_register">register</string>
+    <string name="fio">ФИО</string>
+    <string name="company">Название компании</string>
+    <string name="region_">Регион</string>
+    <string name="position">Должность</string>
+    <string name="email">Электронная почта</string>
+    <string name="phone_num">Номер телефона</string>
+    <string name="login_str">ВХОД</string>
+    <string name="none">none</string>
+    <string name="none_str">none</string>
+    <string name="none_img">none_img</string>
+    <string name="btn_reg">ЗАРЕГИСТРИРОВАТЬСЯ</string>
+    <string name="none_img1">none</string>
+    <string name="title_activity_call">Call</string>
+    <string name="access_code">Код доступа</string>
+    <string name="login_in">ВОЙТИ</string>
+
+
+    <string-array name="planets_array">
+        <item>Республика Адыгея</item>
+        <item>Республика Башкортостан</item>
+        <item>Республика Бурятия</item>
+        <item>Республика Алтай</item>
+        <item>Республика Дагестан</item>
+        <item>Республика Ингушетия</item>
+        <item>Кабардино-Балкарская Республика</item>
+        <item>Республика Калмыкия</item>
+        <item>Республика Карачаево-Черкесия</item>
+        <item>Республика Карелия</item>
+        <item>Республика Коми</item>
+        <item>Республика Марий Эл</item>
+        <item>Республика Мордовия</item>
+        <item>Республика Саха (Якутия)</item>
+        <item>Республика Северная Осетия-Алания</item>
+        <item>Республика Татарстан</item>
+        <item>Республика Тыва</item>
+        <item>Удмуртская Республика</item>
+        <item>Республика Хакасия</item>
+        <item>Чувашская Республика</item>
+        <item>Алтайский край</item>
+        <item>Краснодарский край</item>
+        <item>Красноярский край</item>
+        <item>Приморский край</item>
+        <item>Ставропольский край</item>
+        <item>Хабаровский край</item>
+        <item>Амурская область</item>
+        <item>Архангельская область</item>
+        <item>Астраханская область</item>
+        <item>Белгородская область/</item>
+        <item>Брянская область</item>
+        <item>Владимирская область</item>
+        <item>Волгоградская область</item>
+        <item>Вологодская область</item>
+        <item>Воронежская область</item>
+        <item>Ивановская область</item>
+        <item>Иркутская область</item>
+        <item>Калининградская область</item>
+        <item>Калужская область</item>
+        <item>Камчатский край</item>
+        <item>Кемеровская область</item>
+        <item>Кировская область</item>
+        <item>Костромская область</item>
+        <item>Курганская область</item>
+        <item>Курская область</item>
+        <item>Ленинградская область</item>
+        <item>Липецкая область</item>
+        <item>Магаданская область</item>
+        <item>Московская область</item>
+        <item>Мурманская область</item>
+        <item>Нижегородская область</item>
+        <item>Новгородская область</item>
+        <item>Новосибирская область</item>
+        <item>Омская область</item>
+        <item>Оренбургская область</item>
+        <item>Орловская область</item>
+        <item>Пензенская область</item>
+        <item>Пермский край</item>
+        <item>Псковская область</item>
+        <item>Ростовская область</item>
+        <item>Рязанская область</item>
+        <item>Самарская область</item>
+        <item>Саратовская область</item>
+        <item>Сахалинская область</item>
+        <item>Свердловская область</item>
+        <item>Смоленская область</item>
+        <item>Тамбовская область</item>
+        <item>Тверская область</item>
+        <item>Томская область</item>
+        <item>Тульская область</item>
+        <item>Тюменская область</item>
+        <item>Ульяновская область</item>
+        <item>Челябинская область</item>
+        <item>Забайкальский край</item>
+        <item>Ярославская область</item>
+        <item>г. Москва</item>
+        <item>г. Санкт-Петербург</item>
+        <item>Еврейская автономная область</item>
+        <item>Ненецкий автономный округ</item>
+        <item>Ханты-Мансийский автономный округ - Югра</item>
+        <item>Чукотский автономный округ</item>
+        <item>Республика Крым        </item>
+        <item>г. Севастополь</item>
+        <item>Чеченская Республика</item>
+    </string-array>
+    <string name="title_activity_login">Sign in</string>
+
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password (optional)</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="error_invalid_email">This email address is invalid</string>
+    <string name="error_invalid_password">This password is too short</string>
+    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_field_required">This field is required</string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email
+        completions."
+    </string>
+</resources>

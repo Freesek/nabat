@@ -1,0 +1,248 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/main_v"
+    tools:context="com.example.alex.nabat.Registration">
+
+    <!-- The primary full-screen view. This can be replaced with whatever view
+         is needed to present your content, e.g. VideoView, SurfaceView,
+         TextureView, etc. -->
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/scrollView" >
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal|top"
+                android:weightSum="1">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="130dp"
+                    android:id="@+id/imageView2"
+                    android:layout_gravity="center_horizontal"
+                    android:src="@drawable/head"
+                    android:contentDescription="@string/none_img1"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:scaleType="centerInside"
+                    android:layout_marginTop="-10dp" />
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="-10dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:text="@string/fio"
+                        android:id="@+id/textView3"
+                        android:textColor="#000000" />
+
+                    <EditText
+                        android:layout_width="fill_parent"
+                        android:layout_height="30dp"
+                        android:id="@+id/editText2"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
+                        android:background="@android:drawable/editbox_background"
+                        android:inputType="none"
+                        android:textColor="#000000" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:text="@string/region_"
+                        android:id="@+id/textView2"
+                        android:textColor="#000000" />
+
+                    <Spinner
+                        android:id="@+id/planets_spinner"
+                        android:layout_width="fill_parent"
+                        android:layout_height="30dp"
+                        android:background="@android:drawable/editbox_background_normal" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:text="@string/company"
+                        android:id="@+id/textView4"
+                        android:textColor="#000000" />
+
+                    <EditText
+                        android:layout_width="fill_parent"
+                        android:layout_height="30dp"
+                        android:id="@+id/editText"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
+                        android:background="@android:drawable/editbox_background"
+                        android:inputType="none"
+                        android:textColor="#000000" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:text="@string/position"
+                        android:id="@+id/textView5"
+                        android:textColor="#000000" />
+
+                    <EditText
+                        android:layout_width="fill_parent"
+                        android:layout_height="30dp"
+                        android:id="@+id/editText3"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
+                        android:background="@android:drawable/editbox_background"
+                        android:inputType="none"
+                        android:textColor="#000000" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:text="@string/email"
+                        android:id="@+id/textView6"
+                        android:textColor="#000000" />
+
+                    <EditText
+                        android:layout_width="fill_parent"
+                        android:layout_height="30dp"
+                        android:id="@+id/editText4"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
+                        android:background="@android:drawable/editbox_background"
+                        android:inputType="textEmailAddress"
+                        android:textColor="#000000" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:text="@string/phone_num"
+                        android:id="@+id/textView7"
+                        android:textColor="#000000" />
+
+                    <EditText
+                        android:layout_width="fill_parent"
+                        android:layout_height="30dp"
+                        android:id="@+id/editText5"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
+                        android:background="@android:drawable/editbox_background"
+                        android:inputType="phone|none"
+                        android:textColor="#000000"
+                        android:layout_marginBottom="60dp" />
+
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+        </RelativeLayout>
+    </ScrollView>
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_reg"
+        android:id="@+id/button3"
+        android:background="#e54848"
+        android:textColor="#ffffff"
+        android:textSize="25sp"
+        android:layout_gravity="center_horizontal|bottom" />
+
+
+
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/lay"
+
+        android:gravity="top|left|bottom|right"
+        android:background="#32000000"
+        android:visibility="invisible">
+
+        <!-- The primary full-screen view. This can be replaced with whatever view
+             is needed to present your content, e.g. VideoView, SurfaceView,
+             TextureView, etc. -->
+
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_marginBottom="70dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_gravity="top|left|bottom|right"
+            android:minHeight="350dp">
+
+            <ImageView
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:id="@+id/imageView4"
+                android:layout_gravity="center"
+                android:src="@drawable/succes_reg"
+                android:background="#ffffff"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="0dp"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="0dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="0dp"
+                android:layout_marginBottom="0dp" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:text="Благодарим за
+Регистрацию в системе &quot;Набат&quot;.
+
+
+
+В Течение трех дней
+ваша заявка будет
+рассмотрена.
+
+
+
+Мы обязательно с вами
+свяжемся!"
+                android:id="@+id/textView8"
+                android:layout_gravity="top|left|center|right"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                android:gravity="fill_vertical|center_horizontal"
+                android:minHeight="350dp"
+                android:layout_margin="0dp"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="0dp"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="0dp"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="0dp" />
+        </RelativeLayout>
+    </FrameLayout>
+</FrameLayout>

@@ -1,0 +1,40 @@
+apply plugin: 'com.android.application'
+
+android {
+    signingConfigs {
+        key_store {
+            keyAlias '31415'
+            keyPassword '31415926'
+            //storeFile file('C:/Users/Junior/Desktop/key-store/keyapk.jks')
+            storePassword '3141592653'
+        }
+    }
+    compileSdkVersion 24
+    buildToolsVersion "24.0.2"
+    defaultConfig {
+        applicationId "alex.nabat"
+        minSdkVersion 15
+        targetSdkVersion 24
+        versionCode 1
+        versionName "1"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+repositories {
+    mavenCentral()
+}
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    testCompile 'junit:junit:4.12'
+    compile 'com.android.support:appcompat-v7:24.2.0'
+    compile 'com.android.support:support-v4:24.2.0'
+    compile 'com.android.support:design:24.2.0'
+    compile project(':vksdk_library')
+    compile 'com.facebook.android:facebook-android-sdk:4.+'
+}

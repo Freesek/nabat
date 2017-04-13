@@ -1,0 +1,70 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/main_v"
+    tools:context="com.example.alex.nabat.FullscreenActivity">
+
+    <!-- The primary full-screen view. This can be replaced with whatever view
+         is needed to present your content, e.g. VideoView, SurfaceView,
+         TextureView, etc. -->
+
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/scrollView3" >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:weightSum="1">
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="250dp"
+                    android:id="@+id/imageView"
+                    android:src="@drawable/kolokol"
+                    android:contentDescription="none" />
+
+                <ImageView
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="@string/nabat_str"
+                    android:id="@+id/textView"
+                    android:textColor="#004899"
+                    android:textStyle="bold"
+                    android:textSize="60sp"
+                    android:layout_gravity="top|center_horizontal"
+                    android:src="@drawable/nabat" />
+
+                <Button
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/reg_str"
+                    android:id="@+id/callButton"
+                    android:layout_gravity="top|center_horizontal"
+                    android:background="#e54848"
+                    android:layout_marginTop="10dp"
+                    android:textColor="#ffffff"
+                    android:textSize="20sp"
+                    android:layout_weight="2"
+                    android:onClick="inClick" />
+                <Button
+                    android:id="@+id/loginActivity"
+                    android:onClick="inClick"
+                    android:text="next"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
+            </LinearLayout>
+        </RelativeLayout>
+    </ScrollView>
+</FrameLayout>
