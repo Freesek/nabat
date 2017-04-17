@@ -10,7 +10,6 @@ import android.widget.Spinner;
 import android.app.ProgressDialog;
 import android.widget.Toast;
 
-import com.example.al.nabat.R;
 import com.example.alex.nabat.NabatServer.CallBack;
 import com.example.alex.nabat.NabatServer.Connection;
 import com.example.alex.nabat.Utils.NabatMessage;

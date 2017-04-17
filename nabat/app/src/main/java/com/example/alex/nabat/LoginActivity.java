@@ -5,12 +5,10 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
-import android.support.v7.app.AppCompatActivity;
 import android.telephony.TelephonyManager;
 import android.view.View;
 import android.widget.Toast;
 
-import com.example.al.nabat.R;
 import com.example.alex.nabat.Utils.NabatMessage;
 import com.example.alex.nabat.data.DbContracts;
 import com.example.alex.nabat.data.MySettings;

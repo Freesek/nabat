@@ -8,8 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-import com.example.al.nabat.R;
-
 /**
  * Created by alexey on 06.04.17.
  */

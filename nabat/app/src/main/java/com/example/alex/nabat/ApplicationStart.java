@@ -4,7 +4,6 @@ import android.app.Application;
 import android.content.Context;
 import android.provider.Settings.Secure;
 
-import com.example.alex.nabat.Utils.NabatMessage;
 import com.example.alex.nabat.data.MySettings;
 import com.vk.sdk.VKSdk;
 
