@@ -2,18 +2,26 @@ package com.example.alex.nabat;
 
 import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.content.pm.Signature;
 import android.net.Uri;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Base64;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.example.alex.nabat.data.MySettings;
+
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 
 public class FullscreenActivity extends AppCompatActivity {
@@ -36,6 +44,23 @@ public class FullscreenActivity extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
             actionBar.hide();
+        }
+        try {
+            PackageInfo info = this.getPackageManager().getPackageInfo(
+                    "com.example.alex.nabat",
+                    PackageManager.GET_SIGNATURES);
+            for (Signature signature : info.signatures) {
+                MessageDigest md = MessageDigest.getInstance("SHA");
+                md.update(signature.toByteArray());
+                Log.d("KeyHash:", Base64.encodeToString(md.digest(), Base64.DEFAULT));
+                System.out.println("*******************************************************" + Base64.encodeToString(md.digest(), Base64.DEFAULT));
+                Toast.makeText(this.getBaseContext(), Base64.encodeToString(md.digest(), Base64.DEFAULT), Toast.LENGTH_LONG);
+            }
+        } catch (PackageManager.NameNotFoundException e) {
+            Log.d("FuckingError", this.getPackageName());
+
+        } catch (NoSuchAlgorithmException e) {
+            Log.d("FuckingError", "FuckingError2");
         }
     }
 
