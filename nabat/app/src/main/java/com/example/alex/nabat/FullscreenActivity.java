@@ -13,7 +13,6 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 
-import com.example.al.nabat.R;
 import com.example.alex.nabat.data.MySettings;
 
 
