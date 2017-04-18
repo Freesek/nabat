@@ -41,7 +41,7 @@ public class LoginActivity extends FragmentActivity implements SaveToDB {
                 NabatMessage nm = NabatMessage.getNabatMessage();
                 Profile profile = Profile.getCurrentProfile();
                 AccessToken at = AccessToken.getCurrentAccessToken();
-                Toast.makeText(this, (profile.getFirstName() + " " + nm.getAnswerFB() + " " + nm.getLocation()) + " " + nm.getBirthday() + " " + at.getLastRefresh(), Toast.LENGTH_LONG).show();
+                Toast.makeText(this, (nm.getAnswerFB() + " " + nm.getLocation()) + " " + nm.getBirthday() + " " + at.getLastRefresh() + " " + ms.getFBLogin() + " " + nm.isEmpty() + nm.getPhoneNumber(), Toast.LENGTH_LONG).show();
                 saveNewUser(nm);
             }
         }

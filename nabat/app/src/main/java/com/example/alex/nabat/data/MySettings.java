@@ -24,7 +24,7 @@ public class MySettings {
     private boolean alredySaveToDB = false;
     private MySettings() {}
 
-    public static MySettings getMySettings() {
+    public static synchronized MySettings getMySettings() {
         if(mySettings == null) {
             mySettings = new MySettings();
         }
@@ -84,6 +84,10 @@ public class MySettings {
         editor.putBoolean(APP_PREFERENCES_ACTIVE, false);
         editor.putBoolean(APP_PREFERENCES_NABAT, false);
         editor.apply();
+    }
+
+    public boolean getFBLogin() {
+        return settings.getBoolean(APP_PREFERENCES_FB, false);
     }
 
     public boolean isUserActive() {

@@ -200,7 +200,7 @@ public final class NabatMessage {
     private NabatMessage() {
     }
 
-    public static NabatMessage getNabatMessage() {
+    public static synchronized NabatMessage getNabatMessage() {
         if(nabatMessage == null) {
             nabatMessage = new NabatMessage();
         }
