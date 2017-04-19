@@ -1,6 +1,7 @@
 package com.example.alex.nabat.Utils;
 
 import com.example.alex.nabat.data.MySettings;
+import com.vk.sdk.VKSdk;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -11,17 +12,16 @@ import org.json.JSONObject;
 
 public final class NabatMessage {
     private String name;
-    private String gender;
-    private String birthday;
     private String email;
     private String phoneNumber;
-    private String token;
-    private String id;
-    private String location;
+    private String region;
+    private String companyName;
+    private String companyINN;
     private JSONObject answerFB;
     private JSONObject answerVK;
     private JSONObject message;
     private String android_id;
+
     private boolean isEmpty = true;
 
     private static NabatMessage nabatMessage;
@@ -45,18 +45,12 @@ public final class NabatMessage {
         try {
             if(name != null)
                 message.put("name", name);
-            if(gender != null)
-                message.put("gender", gender);
-            if(birthday != null)
-                message.put("birthday", birthday);
             if(email != null)
                 message.put("email", email);
             if(phoneNumber != null)
                 message.put("phone", phoneNumber);
             if(android_id != null)
                 message.put("android_id",android_id);
-            if(location != null)
-                message.put("location", location);
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -68,20 +62,6 @@ public final class NabatMessage {
             try {
                 if(answerFB.has("name")) {
                     name = answerFB.getString("name");
-                }
-                if(answerFB.has("gender")) {
-                    gender = answerFB.getString("gender");
-                }
-                if(answerFB.has("birthday")) {
-                    birthday = (String) answerFB.get("birthday");
-                }
-                if(answerFB.has("location")) {
-                    if(answerFB.getJSONObject("location").has("name")) {
-                        location = answerFB.getJSONObject("location").getString("name");
-                    }
-                }
-                if(answerFB.has("id")) {
-                    id = answerFB.getString("id");
                 }
                 if(answerFB.has("email")) {
                     email = answerFB.getString("email");
@@ -97,40 +77,21 @@ public final class NabatMessage {
     private void setValuesFromJSONObjectVk() {
         if(answerVK != null) {
             try {
+                if(answerVK.has("response")) {
+                    answerVK = answerVK.getJSONArray("response").optJSONObject(0);
+                }
                 if(answerVK.has("first_name")) {
                     name = answerVK.getString("first_name");
                 }
-                if(answerVK.has("id")) {
-                    id = answerVK.getString("id");
-                }
                 if(answerVK.has("last_name")) {
                     name += " " + answerVK.getString("last_name");
-                }
-                if(answerVK.has("bdate")) {
-                    birthday = (String) answerVK.get("bdate");
-                }
-                if(answerVK.has("city")) {
-                    if(answerVK.getJSONObject("city").has("title")) {
-                        location = answerVK.getJSONObject("city").getString("title");
-                    }
                 }
                 if(answerVK.has("contacts")) {
                     if(answerVK.getJSONObject("contacts").has("mobile_phone")) {
                         phoneNumber = answerVK.getJSONObject("contacts").getString("mobile_phone");
                     }
                 }
-                if(answerVK.has("sex")) {
-                    switch (answerVK.getInt("sex")) {
-                        case 1 : {
-                            gender = "female";
-                            break;
-                        }
-                        case 2 : {
-                            gender = "male";
-                            break;
-                        }
-                    }
-                }
+                email = VKSdk.getAccessToken().email;
                 setAndroid_id(MySettings.getMySettings().getAndroid_id());
                 isEmpty = false;
             } catch (JSONException e) {
@@ -147,10 +108,6 @@ public final class NabatMessage {
         this.android_id = android_id;
     }
 
-    public String getLocation() {
-        return location;
-    }
-
     public String getPhoneNumber() {
         return phoneNumber;
     }
@@ -163,12 +120,16 @@ public final class NabatMessage {
         this.phoneNumber = phoneNumber;
     }
 
-    public String getId() {
-        return id;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getToken() {
-        return token;
+    public void setRegion(String region) {
+        this.region = region;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public void setAnswerFB(JSONObject obj) {
@@ -181,20 +142,16 @@ public final class NabatMessage {
         setValuesFromJSONObjectVk();
     }
 
-    public String getGender() {
-        return gender;
-    }
-
-    public String getBirthday() {
-        return birthday;
-    }
-
     public String getEmail() {
         return email;
     }
 
-    public void setToken(String token) {
-        this.token = token;
+    public void setCompanyName(String companyName) {
+        this.companyName = companyName;
+    }
+
+    public void setCompanyINN(String companyINN) {
+        this.companyINN = companyINN;
     }
 
     private NabatMessage() {

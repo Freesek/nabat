@@ -17,7 +17,6 @@ enum CallBackType
 {
     Login,
     Register
-
 }
 
 
@@ -89,7 +88,7 @@ public class Connection {
     }
 
 
-    public synchronized void   Register(String data,CallBack c) {
+    public synchronized void Register(String data,CallBack c) {
         cb = c;
         DoGetRequest("/add.php",CallBackType.Register,data);
     }
@@ -97,6 +96,4 @@ public class Connection {
         cb =c;
         DoGetRequest("/check.php",CallBackType.Login,data);
     }
-
-
 }

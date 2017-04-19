@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.app.ProgressDialog;
 import android.widget.Toast;
@@ -22,6 +23,7 @@ public class Registration extends AppCompatActivity implements CallBack {
     private ProgressDialog prog1;
 
     private  Registration _this;
+    NabatMessage nm = NabatMessage.getNabatMessage();
 
 
 
@@ -30,13 +32,10 @@ public class Registration extends AppCompatActivity implements CallBack {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
-        Spinner spinner = (Spinner) findViewById(R.id.planets_spinner);
-// Create an ArrayAdapter using the string array and a default spinner layout
+        final Spinner spinner = (Spinner) findViewById(R.id.region_spinner);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.planets_array, android.R.layout.simple_spinner_item);
-// Specify the layout to use when the list of choices appears
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-// Apply the adapter to the spinner
         spinner.setAdapter(adapter);
         spinner.setSelection(58);
         spinner.setOnItemSelectedListener(new Spinner.OnItemSelectedListener() {
@@ -48,22 +47,20 @@ public class Registration extends AppCompatActivity implements CallBack {
                 // Another interface callback
             }
         });
-
-        _this =this;
         prog1 = new ProgressDialog(this);
         prog1.setProgressStyle(ProgressDialog.STYLE_SPINNER);
         prog1.setMessage("Загрузка...");
         prog1.setIndeterminate(true); // выдать значек ожидания
         prog1.setCancelable(false);
+        _this = this;
 
-
-        findViewById(R.id.imageView4).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.thankYouBackground).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 findViewById(R.id.lay).setVisibility(View.INVISIBLE);
             }
         });
-        findViewById(R.id.textView8).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.thankYouText).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 findViewById(R.id.lay).setVisibility(View.INVISIBLE);
@@ -71,10 +68,15 @@ public class Registration extends AppCompatActivity implements CallBack {
         });
 
 
-        findViewById(R.id.button3).setOnClickListener(new Button.OnClickListener() {
+        findViewById(R.id.registrationButton).setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Connection.getInst().Register(NabatMessage.getNabatMessage().getRegistrationMessage(),_this);
+                nm.setName(((EditText) findViewById(R.id.userName)).getText().toString());
+                nm.setRegion(spinner.getSelectedItem().toString());
+                nm.setEmail(((EditText) findViewById(R.id.email)).getText().toString());
+                nm.setPhoneNumber(((EditText) findViewById(R.id.phoneNumber)).getText().toString());
+                nm.setCompanyName(((EditText) findViewById(R.id.companyName)).getText().toString());
+                Connection.getInst().Register(nm.getRegistrationMessage(),_this);
                 prog1.show();
             }
         });

@@ -38,7 +38,7 @@ public class FragmentVk extends Fragment {
             @Override
             public void onClick(View view) {
                 VKSdk.login(getActivity(), sMyScope);
-                VKRequest request = new VKRequest("users.get", VKParameters.from(VKApiConst.FIELDS, "first_name,last_name,bdate,city,contacts,sex"));
+                VKRequest request = new VKRequest("users.get", VKParameters.from(VKApiConst.FIELDS, "first_name,last_name,contacts"));
                 request.executeSyncWithListener(new VKRequest.VKRequestListener() {
                     @Override
                     public void onComplete(VKResponse response) {
@@ -74,11 +74,11 @@ public class FragmentVk extends Fragment {
             public void onError(VKError error) {
             }
         })) {
-            super.onActivityResult(requestCode, resultCode, data);
             MySettings ms = MySettings.getMySettings();
             ms.logInWithVk();
             SaveToDB stdb = (SaveToDB) getActivity();
             stdb.saveData();
+            super.onActivityResult(requestCode, resultCode, data);
         }
     }
 }

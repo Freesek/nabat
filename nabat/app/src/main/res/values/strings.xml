@@ -10,12 +10,12 @@
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
     <string name="title_activity_register">register</string>
-    <string name="fio">ФИО</string>
-    <string name="company">Название компании</string>
-    <string name="region_">Регион</string>
-    <string name="position">Должность</string>
-    <string name="email">Электронная почта</string>
-    <string name="phone_num">Номер телефона</string>
+    <string name="fio">ФИО*</string>
+    <string name="company">НАИМЕНОВАНИЕ КОМПАНИИ</string>
+    <string name="region_">РЕГИОН</string>
+    <string name="companyINN">ИНН</string>
+    <string name="email">ЭЛЕКТРОННАЯ ПОЧТА*</string>
+    <string name="phone_num">НОМЕР ТЕЛЕФОНА*</string>
     <string name="login_str">ВХОД</string>
     <string name="none">none</string>
     <string name="none_str">none</string>
@@ -25,6 +25,8 @@
     <string name="title_activity_call">Call</string>
     <string name="access_code">Код доступа</string>
     <string name="login_in">ВОЙТИ</string>
+    <string name="reg_information">поля отмеченные знаком (*) обязательны  для заполнения</string>
+    <string name="companyData">ДАННЫЕ КОМПАНИИ</string>
 
 
     <string-array name="planets_array">
