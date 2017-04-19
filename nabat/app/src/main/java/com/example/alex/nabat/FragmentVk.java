@@ -38,15 +38,6 @@ public class FragmentVk extends Fragment {
             @Override
             public void onClick(View view) {
                 VKSdk.login(getActivity(), sMyScope);
-            }
-        });
-        return rootView;
-    }
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (!VKSdk.onActivityResult(requestCode, resultCode, data, new VKCallback<VKAccessToken>() {
-            @Override
-            public void onResult(VKAccessToken res) {
                 VKRequest request = new VKRequest("users.get", VKParameters.from(VKApiConst.FIELDS, "first_name,last_name,bdate,city,contacts,sex"));
                 request.executeSyncWithListener(new VKRequest.VKRequestListener() {
                     @Override
@@ -69,6 +60,15 @@ public class FragmentVk extends Fragment {
                         super.onProgress(progressType, bytesLoaded, bytesTotal);
                     }
                 });
+            }
+        });
+        return rootView;
+    }
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (!VKSdk.onActivityResult(requestCode, resultCode, data, new VKCallback<VKAccessToken>() {
+            @Override
+            public void onResult(VKAccessToken res) {
             }
             @Override
             public void onError(VKError error) {
