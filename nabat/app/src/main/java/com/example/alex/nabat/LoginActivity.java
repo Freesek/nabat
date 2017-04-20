@@ -57,17 +57,6 @@ public class LoginActivity extends FragmentActivity implements SaveToDB {
         if(nm.getName() != null) {
             values.put(DbContracts.UserEntry.NAME, nm.getName());
         }
-        if(nm.getPhoneNumber() != null) {
-            values.put(DbContracts.UserEntry.PHONE_NUMBER, nm.getPhoneNumber());
-        } else {
-            TelephonyManager tMgr = (TelephonyManager) this.getSystemService(Context.TELEPHONY_SERVICE);
-            String line;
-            if(tMgr != null) {
-                if ((line = (tMgr.getLine1Number())) != null) {
-                    values.put(DbContracts.UserEntry.PHONE_NUMBER, line);
-                }
-            }
-        }
         if(db.insert(DbContracts.UserEntry.TABLE_NAME, null, values) != -1) {
 
         } else {

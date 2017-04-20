@@ -11,6 +11,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 
 import com.example.alex.nabat.data.MySettings;
@@ -37,6 +39,30 @@ public class FullscreenActivity extends AppCompatActivity {
         if (actionBar != null) {
             actionBar.hide();
         }
+        makeCall = (Button) findViewById(R.id.callButton);
+        makeCall.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                int eventAction = motionEvent.getAction();
+                if (eventAction == MotionEvent.ACTION_UP) {
+                    makeCall.clearAnimation();
+                    Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse(getApplicationContext().getString(R.string.NABAT_PHONE_URL)));
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    if(ContextCompat.checkSelfPermission(FullscreenActivity.this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+                        ActivityCompat.requestPermissions(FullscreenActivity.this,new String[]{Manifest.permission.CALL_PHONE},REQUEST_CALL);
+                    } else {
+                        startActivity(intent);
+                    }
+                }
+                if (eventAction == MotionEvent.ACTION_DOWN) {
+                    final Animation anim = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.animation_call_button);
+                    makeCall.startAnimation(anim);
+                }
+                if (motionEvent.getAction() == MotionEvent.ACTION_CANCEL) {
+                }
+                return true;
+            }
+        });
     }
 
     @Override
@@ -45,16 +71,7 @@ public class FullscreenActivity extends AppCompatActivity {
     }
 
     public void inClick(View view) {
-        makeCall = (Button) findViewById(R.id.callButton);
-        if(makeCall.getId() == view.getId()) {
-            Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse(this.getString(R.string.NABAT_PHONE_URL)));
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            if(ContextCompat.checkSelfPermission(FullscreenActivity.this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
-                ActivityCompat.requestPermissions(FullscreenActivity.this,new String[]{Manifest.permission.CALL_PHONE},REQUEST_CALL);
-            } else {
-                startActivity(intent);
-            }
-        }
+
         if(view.getId() == R.id.loginActivity) {
             Intent intent = new Intent(this, LoginActivity.class);
             startActivity(intent);
