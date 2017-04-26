@@ -1,11 +1,10 @@
 package com.example.alex.nabat;
 
 import android.content.ContentValues;
-import android.content.Context;
+import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
-import android.telephony.TelephonyManager;
 import android.view.View;
 import android.widget.Toast;
 
@@ -43,6 +42,7 @@ public class LoginActivity extends FragmentActivity implements SaveToDB {
 
     public void saveData() {
         saveNewUser(nm);
+        startActivity(new Intent(this, FullscreenActivity.class));
     }
 
     private boolean saveNewUser(NabatMessage message) {

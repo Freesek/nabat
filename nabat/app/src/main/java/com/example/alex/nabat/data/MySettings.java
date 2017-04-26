@@ -36,6 +36,11 @@ public class MySettings {
         editor.apply();
     }
 
+    public void setUserInactive() {
+        editor.putBoolean(APP_PREFERENCES_ACTIVE, false);
+        editor.apply();
+    }
+
     public void setContext(Context context) {
         this.context = context;
         setSettings(this.context.getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE));

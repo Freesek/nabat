@@ -10,13 +10,13 @@
          TextureView, etc. -->
 
     <ScrollView
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:id="@+id/scrollView" >
 
         <RelativeLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content">
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
             <LinearLayout
                 android:orientation="vertical"
@@ -158,22 +158,23 @@
                         android:inputType="none"
                         android:textColor="#000000" />
 
+                    <Button
+                        style="?android:attr/buttonStyleSmall"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/btn_reg"
+                        android:id="@+id/registrationButton"
+                        android:background="#e54848"
+                        android:textColor="#ffffff"
+                        android:textSize="25sp"
+                        android:layout_marginTop="20dp"
+                        android:layout_gravity="center_horizontal|bottom" />
+
                 </LinearLayout>
 
             </LinearLayout>
         </RelativeLayout>
     </ScrollView>
-
-    <Button
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/btn_reg"
-        android:id="@+id/registrationButton"
-        android:background="#e54848"
-        android:textColor="#ffffff"
-        android:textSize="25sp"
-        android:layout_gravity="center_horizontal|bottom" />
 
 
 
@@ -226,9 +227,10 @@
 
 
 
-        Благодарим за
-  Регистрацию в системе
-      &quot;Набат&quot;!"
+
+          Благодарим за
+    Регистрацию в системе
+       &quot;Набат&quot;!"
                 android:id="@+id/thankYouText"
                 android:layout_gravity="top|left|center|right"
                 android:textColor="#FF0000"

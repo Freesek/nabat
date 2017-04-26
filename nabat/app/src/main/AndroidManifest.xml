@@ -32,7 +32,8 @@
         </activity>
         <activity
             android:name="com.example.alex.nabat.Registration"
-            android:theme="@style/FullscreenTheme">
+            android:theme="@style/FullscreenTheme"
+            android:configChanges="keyboardHidden|orientation|screenSize">
         </activity>
         <activity android:name="com.vk.sdk.VKServiceActivity" android:label="ServiceActivity" android:theme="@style/VK.Transparent" />
     </application>

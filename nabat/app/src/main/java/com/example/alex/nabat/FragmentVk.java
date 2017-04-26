@@ -43,6 +43,10 @@ public class FragmentVk extends Fragment {
                     @Override
                     public void onComplete(VKResponse response) {
                         NabatMessage.getNabatMessage().setAnswerVK(response.json);
+                        MySettings ms = MySettings.getMySettings();
+                        ms.logInWithVk();
+                        SaveToDB stdb = (SaveToDB) getActivity();
+                        stdb.saveData();
                     }
 
                     @Override
@@ -74,10 +78,6 @@ public class FragmentVk extends Fragment {
             public void onError(VKError error) {
             }
         })) {
-            MySettings ms = MySettings.getMySettings();
-            ms.logInWithVk();
-            SaveToDB stdb = (SaveToDB) getActivity();
-            stdb.saveData();
             super.onActivityResult(requestCode, resultCode, data);
         }
     }

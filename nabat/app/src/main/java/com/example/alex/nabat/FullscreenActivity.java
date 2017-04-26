@@ -15,6 +15,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 
+import com.example.alex.nabat.Utils.RegistrationDialog;
 import com.example.alex.nabat.data.MySettings;
 
 
@@ -45,13 +46,18 @@ public class FullscreenActivity extends AppCompatActivity {
             public boolean onTouch(View view, MotionEvent motionEvent) {
                 int eventAction = motionEvent.getAction();
                 if (eventAction == MotionEvent.ACTION_UP) {
-                    makeCall.clearAnimation();
-                    Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse(getApplicationContext().getString(R.string.NABAT_PHONE_URL)));
-                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                    if(ContextCompat.checkSelfPermission(FullscreenActivity.this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
-                        ActivityCompat.requestPermissions(FullscreenActivity.this,new String[]{Manifest.permission.CALL_PHONE},REQUEST_CALL);
+                    if(settings.isUserActive()) {
+                        makeCall.clearAnimation();
+                        Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse(getApplicationContext().getString(R.string.NABAT_PHONE_URL)));
+                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        if (ContextCompat.checkSelfPermission(FullscreenActivity.this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+                            ActivityCompat.requestPermissions(FullscreenActivity.this, new String[]{Manifest.permission.CALL_PHONE}, REQUEST_CALL);
+                        } else {
+                            startActivity(intent);
+                        }
                     } else {
-                        startActivity(intent);
+                        makeCall.clearAnimation();
+                        new RegistrationDialog().show(getSupportFragmentManager(), "registrationDialog");
                     }
                 }
                 if (eventAction == MotionEvent.ACTION_DOWN) {
@@ -59,6 +65,7 @@ public class FullscreenActivity extends AppCompatActivity {
                     makeCall.startAnimation(anim);
                 }
                 if (motionEvent.getAction() == MotionEvent.ACTION_CANCEL) {
+                    makeCall.clearAnimation();
                 }
                 return true;
             }
@@ -70,11 +77,12 @@ public class FullscreenActivity extends AppCompatActivity {
         super.onPostCreate(savedInstanceState);
     }
 
-    public void inClick(View view) {
+    public void authOk() {
+        Intent intent = new Intent(this, LoginActivity.class);
+        startActivity(intent);
+    }
 
-        if(view.getId() == R.id.loginActivity) {
-            Intent intent = new Intent(this, LoginActivity.class);
-            startActivity(intent);
-        }
+    public void inClick(View view) {
+        MySettings.getMySettings().setUserInactive();
     }
 }

@@ -63,6 +63,10 @@ public class FragmentFb extends Fragment {
                             @Override
                             public void onCompleted(JSONObject object, GraphResponse response) {
                                 nm.setAnswerFB(object);
+                                MySettings ms = MySettings.getMySettings();
+                                ms.logInWithFb();
+                                SaveToDB stdb = (SaveToDB) getActivity();
+                                stdb.saveData();
                             }
                         });
                 Bundle parameters = new Bundle();
@@ -87,10 +91,6 @@ public class FragmentFb extends Fragment {
     @Override
     public void onActivityResult(int requestCode, int responseCode, Intent data) {
         super.onActivityResult(requestCode,responseCode,data);
-        MySettings ms = MySettings.getMySettings();
-        ms.logInWithFb();
-        SaveToDB stdb = (SaveToDB) getActivity();
-        stdb.saveData();
         callbackManager.onActivityResult(requestCode,responseCode,data);
     }
 }

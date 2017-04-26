@@ -20,7 +20,7 @@
     <string name="none">none</string>
     <string name="none_str">none</string>
     <string name="none_img">none_img</string>
-    <string name="btn_reg">ЗАРЕГИСТРИРОВАТЬСЯ</string>
+    <string name="btn_reg">СОХРАНИТЬ</string>
     <string name="none_img1">none</string>
     <string name="title_activity_call">Call</string>
     <string name="access_code">Код доступа</string>
