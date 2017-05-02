@@ -28,6 +28,11 @@
     <string name="reg_information">поля отмеченные знаком (*) обязательны  для заполнения</string>
     <string name="companyData">ДАННЫЕ КОМПАНИИ</string>
 
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+
 
     <string-array name="planets_array">
         <item>Республика Адыгея</item>
