@@ -51,7 +51,7 @@ public class Connection {
             @Override
             public void run() {
                 try {
-                    String url="http://82.146.33.19:8154"+a_url;
+                    String url="http://petstore.swagger.io/v2"+a_url;
                     URL object=new URL(url);
                     HttpURLConnection con = (HttpURLConnection) object.openConnection();
                     con.setDoOutput(true);
@@ -90,10 +90,10 @@ public class Connection {
 
     public synchronized void Register(String data,CallBack c) {
         cb = c;
-        DoGetRequest("/add.php",CallBackType.Register,data);
+        DoGetRequest("/user",CallBackType.Register,data);
     }
     public synchronized void Login(String data,CallBack c) {
         cb =c;
-        DoGetRequest("/check.php",CallBackType.Login,data);
+        DoGetRequest("/user/login",CallBackType.Login,data);
     }
 }

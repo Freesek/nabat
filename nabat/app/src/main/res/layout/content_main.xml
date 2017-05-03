@@ -7,5 +7,4 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.example.alex.nabat.FullscreenActivity"
     tools:showIn="@layout/app_bar_main">
-
 </RelativeLayout>

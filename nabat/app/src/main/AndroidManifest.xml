@@ -13,11 +13,11 @@
         android:icon="@mipmap/icon"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:windowNoTitle="true">
+        android:windowNoTitle="true"
+        android:theme="@style/AppTheme">
         <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/facebook_app_id"/>
         <activity
-            android:name="com.example.alex.nabat.FullscreenActivity"
-            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:name=".FullscreenActivity"
             android:theme="@style/AppTheme.NoActionBar"
             android:label="@string/app_name">
             <intent-filter>
