@@ -2,14 +2,12 @@ package com.example.alex.nabat.Utils;
 
 import android.app.Dialog;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AlertDialog;
 
 import com.example.alex.nabat.FullscreenActivity;
-import com.example.alex.nabat.Registration;
 
 /**
  * Created by alexey on 19.04.17.
