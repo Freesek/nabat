@@ -6,9 +6,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    android:background="@drawable/main_v"
+    android:background="@color/background_color"
     tools:context="com.example.alex.nabat.FullscreenActivity"
-    tools:openDrawer="start">
+    tools:openDrawer="end">
 
     <!-- The primary full-screen view. This can be replaced with whatever view
          is needed to present your content, e.g. VideoView, SurfaceView,
@@ -53,9 +53,17 @@
                     android:id="@+id/callButton"
                     android:layout_gravity="top|center_horizontal"
                     android:onClick="inClick" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="100dp"
+                    android:text="@string/welcome_text"
+                    android:textColor="@color/colorRed"
+                    android:textSize="18sp"
+                    android:gravity="center_horizontal|center_vertical"/>
                 <Button
                     android:id="@+id/loginActivity"
-                    android:layout_marginTop="100dp"
+                    android:layout_marginTop="5dp"
                     android:onClick="inClick"
                     android:text="next"
                     android:layout_width="match_parent"

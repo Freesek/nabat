@@ -41,14 +41,13 @@ public class Connection {
             String url = "http://104.236.23.64/receiver" + a_url;
             URL object = new URL(url);
             HttpURLConnection con = (HttpURLConnection) object.openConnection();
-            con.setDoOutput(true);
-            con.setDoInput(true);
-            con.setRequestProperty("Content-Type", "application/json");
-            con.setRequestProperty("Accept", "application/json");
+            con.setRequestProperty("Accept", "application/json;charset=UTF8");
+            //con.setRequestProperty("Accept", "application/json");
+            //con.setRequestProperty("data", data);
             con.setRequestMethod("POST");
-            OutputStreamWriter wr = new OutputStreamWriter(con.getOutputStream());
+            /*OutputStreamWriter wr = new OutputStreamWriter(con.getOutputStream());
             wr.write(data);
-            wr.flush();
+            wr.flush();*/
             int HttpResult = con.getResponseCode();
             Log.d("message", data);
             Log.d("responseCode1", " " + HttpResult);

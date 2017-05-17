@@ -33,6 +33,10 @@
 
     <string name="action_settings">Settings</string>
 
+    <string name="welcome_text">ДЛЯ БЕСПЛАТНОЙ ЮРИДИЧЕСКОЙ\u000A
+    КОНСУЛЬТАЦИИ ПРИ ПРОВЕРКЕ\u000A
+    НАЖМИТЕ КНОПКУ</string>
+
 
     <string-array name="planets_array">
         <item>Республика Адыгея</item>
