@@ -2,6 +2,7 @@ package com.example.alex.nabat;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -76,7 +77,8 @@ public class Registration extends AppCompatActivity implements CallBack {
                 nm.setEmail(((EditText) findViewById(R.id.email)).getText().toString());
                 nm.setPhoneNumber(((EditText) findViewById(R.id.phoneNumber)).getText().toString());
                 nm.setCompanyName(((EditText) findViewById(R.id.companyName)).getText().toString());
-                Connection.getInst().Register(nm.getRegistrationMessage(),_this);
+                Log.d("Message", nm.getRegistrationMessage());
+                Connection.getInst().register(nm.getRegistrationMessage());
                 prog1.show();
             }
         });

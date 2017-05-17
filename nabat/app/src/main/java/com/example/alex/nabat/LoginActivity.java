@@ -1,5 +1,6 @@
 package com.example.alex.nabat;
 
+import android.app.ProgressDialog;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
@@ -8,6 +9,8 @@ import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.widget.Toast;
 
+import com.example.alex.nabat.NabatServer.Connection;
+import com.example.alex.nabat.NabatServer.NabatConnect;
 import com.example.alex.nabat.Utils.NabatMessage;
 import com.example.alex.nabat.data.DbContracts;
 import com.example.alex.nabat.data.MySettings;
@@ -51,6 +54,7 @@ public class LoginActivity extends FragmentActivity implements SaveToDB {
         } else if(message.isEmpty()) {
             return false;
         }
+        new NabatConnect(this, message.getRegistrationMessage(), Connection.CallBackType.RegisterSocial).execute();
         boolean success = true;
         SQLiteDatabase db = mUserDb.getWritableDatabase();
         ContentValues values = new ContentValues();
@@ -64,4 +68,5 @@ public class LoginActivity extends FragmentActivity implements SaveToDB {
         }
         return success;
     }
+
 }
