@@ -130,4 +130,8 @@
         <item>Чеченская Республика</item>
     </string-array>
     <string name="title_activity_login">Sign in</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="step_one">Шаг 1: Выберите проверяющий орган</string>
 </resources>
