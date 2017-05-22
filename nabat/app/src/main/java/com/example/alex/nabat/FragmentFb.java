@@ -8,9 +8,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.example.alex.nabat.NabatServer.LoginSocial;
 import com.example.alex.nabat.Utils.NabatMessage;
 import com.example.alex.nabat.data.MySettings;
-import com.example.alex.nabat.data.SaveToDB;
 import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
@@ -64,13 +64,12 @@ public class FragmentFb extends Fragment {
                             public void onCompleted(JSONObject object, GraphResponse response) {
                                 nm.setAnswerFB(object);
                                 MySettings ms = MySettings.getMySettings();
-                                ms.logInWithFb();
-                                SaveToDB stdb = (SaveToDB) getActivity();
-                                stdb.saveData();
+                                LoginSocial ls = (LoginSocial) getParentFragment();
+                                ls.loginSocial();
                             }
                         });
                 Bundle parameters = new Bundle();
-                parameters.putString("fields","id,name,location,gender,birthday,email");
+                parameters.putString("fields","id,name,email");
                 request.setParameters(parameters);
                 request.executeAsync();
             }

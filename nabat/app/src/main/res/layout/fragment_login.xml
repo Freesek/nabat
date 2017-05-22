@@ -11,6 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
+
         <TextView
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
@@ -20,32 +21,45 @@
             android:text="EMAIL" />
 
         <EditText
+            android:id="@+id/editLogin"
             android:layout_width="match_parent"
             android:layout_height="30dp"
-            android:id="@+id/editLogin"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
             android:background="@android:drawable/editbox_background"
             android:inputType="textEmailAddress"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
             android:textColor="#000000" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingLeft="30dp"
-            android:text="ПАРОЛЬ"/>
+            android:text="ПАРОЛЬ" />
 
         <EditText
+            android:id="@+id/editPassword"
             android:layout_width="fill_parent"
             android:layout_height="30dp"
-            android:paddingLeft="30dp"
-            android:id="@+id/editPassword"
             android:background="@android:drawable/editbox_background"
             android:inputType="textPassword"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
             android:textColor="#000000" />
+
+        <Button
+            android:id="@+id/enter"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:background="#e54848"
+            android:onClick="onClick"
+            android:text="@string/enter" />
 
         <fragment
             android:id="@+id/fragmentFb"
+            android:layout_marginTop="20dp"
             android:name="com.example.alex.nabat.FragmentFb"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -58,19 +72,17 @@
             android:layout_height="wrap_content"
             tools:layout="@layout/fragment_vk" />
 
-        <fragment
-            android:id="@+id/fragmentNabat"
-            android:name="com.example.alex.nabat.FragmentNabat"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            tools:layout="@layout/fragment_nabat" />
-
         <Button
-            android:id="@+id/callToast"
-            android:text="CallToast"
-            android:onClick="onClick"
-            android:layout_width="match_parent"
-            android:layout_height="50dp" />
+            android:id="@+id/nabatRegistrationButton"
+            android:layout_width="188dp"
+            android:layout_height="34dp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/nabat_button" />
+
     </LinearLayout>
 
 </FrameLayout>

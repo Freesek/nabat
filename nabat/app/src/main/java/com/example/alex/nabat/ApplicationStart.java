@@ -18,7 +18,6 @@ public class ApplicationStart extends Application {
         VKSdk.initialize(this);
         MySettings ms = MySettings.getMySettings();
         ms.setContext(getBaseContext());
-        ms.setAndroid_id(Secure.getString(getBaseContext().getContentResolver(), Secure.ANDROID_ID));
     }
 
     @Override

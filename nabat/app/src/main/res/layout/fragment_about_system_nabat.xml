@@ -1,13 +1,80 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.alex.nabat.FragmentAboutSystemNabat">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
+        android:id="@+id/layout_title1"
+        android:paddingTop="30dp"
+        android:paddingLeft="15dp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_what_nabat"/>
+        <TextView
+            android:id="@+id/what_nabat"
+            android:layout_gravity="center_vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="20dp"
+            android:text="Что такое система «Набат»?"
+            android:textSize="14sp" />
+    </LinearLayout>
 
-</FrameLayout>
+    <TextView
+        android:id="@+id/about_nabat_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/layout_title1"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:paddingTop="25dp"
+        android:text="@string/about_nabat_text" />
+
+    <LinearLayout
+        android:id="@+id/layout_title2"
+        android:layout_width="wrap_content"
+        android:paddingLeft="15dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/about_nabat_text"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_who_nabat"/>
+
+        <TextView
+            android:layout_gravity="center_vertical"
+            android:id="@+id/who_nabat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="20dp"
+            android:text="Кто организатор?"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/sup1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/layout_title2"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:paddingTop="25dp"
+        android:text="@string/about_nabat_sup1" />
+
+    <TextView
+        android:id="@+id/hyper_link_about_nabat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/sup1"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp" />
+
+</RelativeLayout>

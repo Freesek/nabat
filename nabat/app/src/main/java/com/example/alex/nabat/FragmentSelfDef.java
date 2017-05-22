@@ -1,11 +1,16 @@
 package com.example.alex.nabat;
 
 
+import android.app.FragmentTransaction;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
+import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
+import android.widget.Toast;
 
 
 /**
@@ -22,8 +27,52 @@ public class FragmentSelfDef extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_self_def, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_self_def, container, false);
+        final Spinner spinner = (Spinner) rootView.findViewById(R.id.self_def_spinner);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity(),
+                R.array.steps, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
+        spinner.setSelection(0);
+        final FragmentStepOne fsOne = new FragmentStepOne();
+        final FragmentStepTwo fsTwo = new FragmentStepTwo();
+        final FragmentStepThree fsThree = new FragmentStepThree();
+        final FragmentStepFour fsFour = new FragmentStepFour();
+        final FragmentStepFive fsFive = new FragmentStepFive();
+        //FragmentTransaction fTrans = getChildFragmentManager().beginTransaction();
+        spinner.setOnItemSelectedListener(new Spinner.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                FragmentTransaction fTrans = getChildFragmentManager().beginTransaction();
+                switch (position) {
+                    case 0 : {
+                        fTrans.replace(R.id.container_self_def, fsOne);
+                        break;
+                    }
+                    case 1 : {
+                        fTrans.replace(R.id.container_self_def, fsTwo);
+                        break;
+                    }
+                    case 2 : {
+                        fTrans.replace(R.id.container_self_def, fsThree);
+                        break;
+                    }
+                    case 3 : {
+                        fTrans.replace(R.id.container_self_def, fsFour);
+                        break;
+                    }
+                    case 4 : {
+                        fTrans.replace(R.id.container_self_def, fsFive);
+                        break;
+                    }
+                }
+                fTrans.commit();
+            }
+            public void onNothingSelected(AdapterView<?> parent) {
+                // Another interface callback
+            }
+        });
+        return rootView;
     }
 
 }

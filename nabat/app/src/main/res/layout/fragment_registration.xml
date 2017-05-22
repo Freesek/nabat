@@ -36,16 +36,19 @@
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceMedium"
                         android:text="@string/fio"
+                        android:layout_marginLeft="25dp"
                         android:id="@+id/userNameText"
                         android:textColor="#FF0000"
                         android:layout_marginTop="30dp"/>
 
                     <EditText
                         android:layout_width="fill_parent"
-                        android:layout_height="30dp"
+                        android:layout_height="40dp"
                         android:id="@+id/userName"
                         android:paddingLeft="10dp"
                         android:paddingRight="10dp"
+                        android:layout_marginLeft="25dp"
+                        android:layout_marginRight="25dp"
                         android:background="@android:drawable/editbox_background"
                         android:inputType="none"
                         android:textColor="#000000" />
@@ -55,15 +58,18 @@
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceMedium"
                         android:text="@string/phone_num"
+                        android:layout_marginLeft="25dp"
                         android:id="@+id/phoneNumberText"
                         android:textColor="#FF0000" />
 
                     <EditText
                         android:layout_width="fill_parent"
-                        android:layout_height="30dp"
+                        android:layout_height="40dp"
                         android:id="@+id/phoneNumber"
                         android:paddingLeft="10dp"
                         android:paddingRight="10dp"
+                        android:layout_marginLeft="25dp"
+                        android:layout_marginRight="25dp"
                         android:background="@android:drawable/editbox_background"
                         android:inputType="phone|none"
                         android:textColor="#000000" />
@@ -73,15 +79,18 @@
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceMedium"
                         android:text="@string/email"
+                        android:layout_marginLeft="25dp"
                         android:id="@+id/emailText"
                         android:textColor="#FF0000" />
 
                     <EditText
                         android:layout_width="fill_parent"
-                        android:layout_height="30dp"
+                        android:layout_height="40dp"
                         android:id="@+id/email"
                         android:paddingLeft="10dp"
                         android:paddingRight="10dp"
+                        android:layout_marginLeft="25dp"
+                        android:layout_marginRight="25dp"
                         android:background="@android:drawable/editbox_background"
                         android:inputType="textEmailAddress"
                         android:textColor="#000000" />
@@ -90,20 +99,27 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:text="@string/region_"
+                        android:text="@string/set_password"
+                        android:layout_marginLeft="25dp"
                         android:id="@+id/regionText"
                         android:textColor="#FF0000" />
-
-                    <Spinner
-                        android:id="@+id/region_spinner"
-                        android:layout_width="fill_parent"
-                        android:layout_height="30dp"
-                        android:background="@android:drawable/editbox_background_normal" />
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:id="@+id/password"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
+                        android:layout_marginLeft="25dp"
+                        android:layout_marginRight="25dp"
+                        android:background="@android:drawable/editbox_background"
+                        android:inputType="textPassword"
+                        android:textColor="#000000" />
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceMedium"
                         android:text="@string/reg_information"
+                        android:layout_marginLeft="25dp"
                         android:id="@+id/regInformation"
                         android:textSize="10sp"
                         android:textColor="#FF0000" />
@@ -114,8 +130,9 @@
                         android:textAppearance="?android:attr/textAppearanceMedium"
                         android:text="@string/companyData"
                         android:id="@+id/companyData"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginBottom="10dp"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
+                        android:layout_marginLeft="25dp"
                         android:textSize="28sp"
                         android:textColor="#FF0000" />
 
@@ -124,15 +141,18 @@
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceMedium"
                         android:text="@string/company"
+                        android:layout_marginLeft="25dp"
                         android:id="@+id/companyNameText"
                         android:textColor="#FF0000" />
 
                     <EditText
                         android:layout_width="fill_parent"
-                        android:layout_height="30dp"
+                        android:layout_height="40dp"
                         android:id="@+id/companyName"
                         android:paddingLeft="10dp"
                         android:paddingRight="10dp"
+                        android:layout_marginLeft="25dp"
+                        android:layout_marginRight="25dp"
                         android:background="@android:drawable/editbox_background"
                         android:inputType="none"
                         android:textColor="#000000" />
@@ -142,15 +162,18 @@
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceMedium"
                         android:text="@string/companyINN"
+                        android:layout_marginLeft="25dp"
                         android:id="@+id/companyINN"
                         android:textColor="#FF0000" />
 
                     <EditText
                         android:layout_width="fill_parent"
-                        android:layout_height="30dp"
-                        android:id="@+id/position"
+                        android:layout_height="40dp"
+                        android:id="@+id/inn"
                         android:paddingLeft="10dp"
                         android:paddingRight="10dp"
+                        android:layout_marginLeft="25dp"
+                        android:layout_marginRight="25dp"
                         android:background="@android:drawable/editbox_background"
                         android:inputType="none"
                         android:textColor="#000000" />

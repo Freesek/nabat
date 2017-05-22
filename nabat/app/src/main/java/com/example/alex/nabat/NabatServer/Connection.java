@@ -1,6 +1,12 @@
 package com.example.alex.nabat.NabatServer;
 
+import android.util.Base64;
 import android.util.Log;
+import android.widget.Toast;
+
+import com.example.alex.nabat.Utils.NabatMessage;
+import com.example.alex.nabat.data.MySettings;
+import com.facebook.Profile;
 
 import org.json.JSONObject;
 
@@ -16,6 +22,8 @@ import java.net.URL;
 
 
 public class Connection {
+
+    MySettings ms = MySettings.getMySettings();
 
     public enum CallBackType {
         Login,
@@ -37,22 +45,25 @@ public class Connection {
 
 
     private synchronized void doGetRequest(final String a_url, final CallBackType tp, final String data) {
+        JSONObject obj = null;
         try {
             String url = "http://104.236.23.64/receiver" + a_url;
             URL object = new URL(url);
             HttpURLConnection con = (HttpURLConnection) object.openConnection();
             con.setRequestProperty("Content-Type", "application/json;charset=UTF8");
-            //con.setRequestProperty("Accept", "application/json");
-            //con.setRequestProperty("data", data);
-            con.setRequestMethod("POST");
-            OutputStreamWriter wr = new OutputStreamWriter(con.getOutputStream());
-            wr.write(data);
-            wr.flush();
+            if (tp.equals(CallBackType.Login)) {
+                con.setRequestProperty("Authorization", "Basic " + new String(Base64.encode(data.getBytes(), Base64.DEFAULT)));
+                con.setRequestMethod("POST");
+            } else {
+                con.setRequestProperty("Authorization", "Basic "
+                        + new String(Base64.encode(("application:7598").getBytes(), Base64.DEFAULT)));
+                con.setRequestMethod("POST");
+                OutputStreamWriter wr = new OutputStreamWriter(con.getOutputStream());
+                wr.write(data);
+                wr.flush();
+            }
             int HttpResult = con.getResponseCode();
-            Log.d("message", data);
-            Log.d("responseCode1", " " + HttpResult);
-            Log.d("responseCode2", con.toString());
-            if (HttpResult == HttpURLConnection.HTTP_OK) {
+            if (HttpResult == HttpURLConnection.HTTP_OK || HttpResult == HttpURLConnection.HTTP_CREATED) {
                 BufferedReader br = new BufferedReader(
                         new InputStreamReader(con.getInputStream(), "utf-8"));
                 String line = null;
@@ -60,29 +71,47 @@ public class Connection {
                 while ((line = br.readLine()) != null) {
                     sb = line + "\n";
                 }
-                Log.d("responseCode", "1");
                 br.close();
-                Log.d("responseCode", sb.length() + "");
-                JSONObject obj = new JSONObject(sb);
-                Log.d("responseCode", "3");
-                Log.d("object*****", obj.toString());
+                obj = new JSONObject(sb);
+                if(obj.has("token")) {
+                    ms.putToken(obj.getString("token"));
+                    Log.d("token", ms.getToken());
+                } else {
+                    ms.putToken("");
+                }
             } else {
-                return;
+                BufferedReader br = new BufferedReader(new InputStreamReader(con.getErrorStream()));
+                String line = null;
+                String sb = "";
+                while ((line = br.readLine()) != null) {
+                    sb = line + "\n";
+                }
+                obj = new JSONObject(sb);
+                if(HttpResult == 401) {
+                    if(obj.has("message")) {
+                        String errorMessage = obj.getString("message").equals("Bad credentials") ? "Введены неверные данные, попробуйте еще раз" : "Неивзестная ошибка сервера";
+                        setError(errorMessage);
+                    }
+                }
             }
         } catch (Exception e) {
         }
     }
 
-
-    public synchronized void register(String data) {
-        doGetRequest("/login", CallBackType.Register, data);
+    private void setError(String error) {
+        NabatMessage.getNabatMessage().setError(error);
     }
 
+
     public synchronized void login(String data) {
-        doGetRequest("/register", CallBackType.Login, data);
+        doGetRequest("/login", CallBackType.Login, data);
+    }
+
+    public synchronized void register(String data) {
+        doGetRequest("/register", CallBackType.Register, data);
     }
 
     public synchronized void registerWithSocial(String data) {
-        doGetRequest("/register/social", CallBackType.Login, data);
+        doGetRequest("/register/social", CallBackType.RegisterSocial, data);
     }
 }

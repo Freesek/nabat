@@ -11,51 +11,47 @@
         android:layout_height="wrap_content">
 
         <LinearLayout
-            android:orientation="vertical"
-            android:layout_marginTop="55dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center"
+            android:layout_marginTop="55dp"
+            android:orientation="vertical"
             android:weightSum="1">
 
             <ImageView
+                android:id="@+id/textView"
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:id="@+id/textView"
                 android:layout_gravity="top|center_horizontal"
-                android:src="@drawable/background_button" />
+                android:src="@drawable/background_button"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
         </LinearLayout>
+
         <LinearLayout
-            android:layout_marginTop="110dp"
-            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center"
+            android:layout_marginTop="110dp"
+            android:orientation="vertical"
             android:weightSum="1">
+
             <Button
+                android:id="@+id/callButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="5dp"
-                android:background="@drawable/call_button"
-                android:id="@+id/callButton"
                 android:layout_gravity="top|center_horizontal"
-                android:onClick="inClick" />
+                android:layout_marginRight="5dp"
+                android:background="@drawable/call_button"/>
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="100dp"
+                android:gravity="center_horizontal|center_vertical"
                 android:text="@string/welcome_text"
                 android:textColor="@color/colorRed"
-                android:textSize="18sp"
-                android:gravity="center_horizontal|center_vertical"/>
-            <Button
-                android:id="@+id/loginActivity"
-                android:layout_marginTop="5dp"
-                android:onClick="setUserInactive"
-                android:text="next"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:textSize="18sp" />
+
         </LinearLayout>
     </RelativeLayout>
 

@@ -3,6 +3,8 @@ package com.example.alex.nabat.data;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import org.json.JSONObject;
+
 
 /**
  * Created by alexey on 06.04.17.
@@ -13,15 +15,11 @@ public class MySettings {
     private static MySettings mySettings;
     private static final String APP_PREFERENCES = "userStatus";
     private SharedPreferences.Editor editor;
-    private String APP_PREFERENCES_ID = "id";
-    private String APP_PREFERENCES_ACTIVE = "active";
-    private String APP_PREFERENCES_VK = "vk";
-    private String APP_PREFERENCES_FB = "fb";
-    private String APP_PREFERENCES_NABAT = "nabat";
-    private String APP_PREFERENCES_ALREDY_SAVE = "saved_in_db";
+    private final String APP_PREFERENCES_ACTIVE = "active";
+    private final String APP_PREFERENCES_TOKEN = "token";
+    private final String APP_PREFERENCES_EMAIL = "email";
+    private final String APP_PREFERENCES_NAME = "name";
     private Context context;
-    private String android_id;
-    private boolean alredySaveToDB = false;
     private MySettings() {}
 
     public static synchronized MySettings getMySettings() {
@@ -31,13 +29,37 @@ public class MySettings {
         return mySettings;
     }
 
-    public void putId(int id) {
-        editor.putInt(APP_PREFERENCES_ID, id);
+    public void setDataForHeader(String name, String email) {
+        editor.putString(APP_PREFERENCES_NAME, name);
+        editor.putString(APP_PREFERENCES_EMAIL, email);
         editor.apply();
     }
 
+    public String getName() {
+        return settings.getString("name", "Nabat");
+    }
+    public String getEmail() {
+        return settings.getString("email", "");
+    }
+
+    public void putToken(String token) {
+        editor.putString(APP_PREFERENCES_TOKEN, token);
+        editor.apply();
+    }
+
+    public String getToken() {
+        return settings.getString(APP_PREFERENCES_TOKEN, null);
+    }
+
+
     public void setUserInactive() {
         editor.putBoolean(APP_PREFERENCES_ACTIVE, false);
+        editor.putString(APP_PREFERENCES_TOKEN, "");
+        editor.apply();
+    }
+
+    public void setUserActive() {
+        editor.putBoolean(APP_PREFERENCES_ACTIVE, true);
         editor.apply();
     }
 
@@ -55,68 +77,8 @@ public class MySettings {
         this.editor = editor;
     }
 
-    public void logInWithVk() {
-        editor.putBoolean(APP_PREFERENCES_ACTIVE, true);
-        editor.putBoolean(APP_PREFERENCES_VK,true);
-        editor.apply();
-    }
-
-    public void logOutWithVk() {
-        editor.putBoolean(APP_PREFERENCES_ACTIVE, false);
-        editor.putBoolean(APP_PREFERENCES_VK, false);
-        editor.apply();
-    }
-
-    public void logInWithFb() {
-        editor.putBoolean(APP_PREFERENCES_ACTIVE, true);
-        editor.putBoolean(APP_PREFERENCES_FB,true);
-        editor.apply();
-    }
-
-    public void logOutWithFb() {
-        editor.putBoolean(APP_PREFERENCES_ACTIVE, false);
-        editor.putBoolean(APP_PREFERENCES_FB, false);
-        editor.apply();
-    }
-
-    public void logInWithNabat() {
-        editor.putBoolean(APP_PREFERENCES_ACTIVE, true);
-        editor.putBoolean(APP_PREFERENCES_NABAT,true);
-        editor.apply();
-    }
-
-    public void logOutWithNabat() {
-        editor.putBoolean(APP_PREFERENCES_ACTIVE, false);
-        editor.putBoolean(APP_PREFERENCES_NABAT, false);
-        editor.apply();
-    }
-
-    public boolean getFBLogin() {
-        return settings.getBoolean(APP_PREFERENCES_FB, false);
-    }
-
     public boolean isUserActive() {
         return settings.getBoolean(APP_PREFERENCES_ACTIVE, false);
     }
 
-    public int getCurrentUserId() {
-        return settings.getInt(APP_PREFERENCES_ID, 0);
-    }
-
-    public void setAndroid_id(String android_id) {
-        this.android_id = android_id;
-    }
-
-    public String getAndroid_id() {
-        return android_id;
-    }
-
-    public boolean getAlredySaveToDB() {
-        return settings.getBoolean(APP_PREFERENCES_ALREDY_SAVE, false);
-    }
-
-    public void saveToDB() {
-        editor.putBoolean(APP_PREFERENCES_ALREDY_SAVE, true);
-        editor.apply();
-    }
 }

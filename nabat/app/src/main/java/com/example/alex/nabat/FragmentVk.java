@@ -8,9 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.example.alex.nabat.NabatServer.LoginSocial;
 import com.example.alex.nabat.Utils.NabatMessage;
-import com.example.alex.nabat.data.MySettings;
-import com.example.alex.nabat.data.SaveToDB;
 import com.vk.sdk.VKAccessToken;
 import com.vk.sdk.VKCallback;
 import com.vk.sdk.VKScope;
@@ -26,6 +25,7 @@ import com.vk.sdk.api.VKResponse;
  */
 
 public class FragmentVk extends Fragment {
+    FragmentVk fv = this;
     private static final String[] sMyScope = new String[]{
             VKScope.EMAIL
     };
@@ -37,16 +37,12 @@ public class FragmentVk extends Fragment {
         vkAuth.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                VKSdk.login(getActivity(), sMyScope);
+                VKSdk.login(fv, sMyScope);
                 VKRequest request = new VKRequest("users.get", VKParameters.from(VKApiConst.FIELDS, "first_name,last_name,contacts"));
                 request.executeSyncWithListener(new VKRequest.VKRequestListener() {
                     @Override
                     public void onComplete(VKResponse response) {
                         NabatMessage.getNabatMessage().setAnswerVK(response.json);
-                        MySettings ms = MySettings.getMySettings();
-                        ms.logInWithVk();
-                        SaveToDB stdb = (SaveToDB) getActivity();
-                        stdb.saveData();
                     }
 
                     @Override
@@ -73,6 +69,8 @@ public class FragmentVk extends Fragment {
         if (!VKSdk.onActivityResult(requestCode, resultCode, data, new VKCallback<VKAccessToken>() {
             @Override
             public void onResult(VKAccessToken res) {
+                LoginSocial ls = (LoginSocial) getParentFragment();
+                ls.loginSocial();
             }
             @Override
             public void onError(VKError error) {

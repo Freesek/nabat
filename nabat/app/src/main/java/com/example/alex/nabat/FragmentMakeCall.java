@@ -2,12 +2,13 @@ package com.example.alex.nabat;
 
 
 import android.Manifest;
+import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
-import android.support.v4.app.Fragment;
+import android.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -18,7 +19,6 @@ import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.example.alex.nabat.Utils.RegistrationDialog;
 import com.example.alex.nabat.data.MySettings;
 
 
@@ -28,6 +28,7 @@ import com.example.alex.nabat.data.MySettings;
 public class FragmentMakeCall extends Fragment {
 
     Button makeCall;
+    Button loginButton;
     public MySettings settings;
     private static final int REQUEST_CALL = 1;
 
@@ -59,8 +60,11 @@ public class FragmentMakeCall extends Fragment {
                         }
                     } else {
                         makeCall.clearAnimation();
-                        Toast.makeText(rootView.getContext(), "Данные не те, ты не авторизован братан", Toast.LENGTH_LONG);
-                        //new RegistrationDialog().show(getSupportFragmentManager(), "registrationDialog");
+                        Toast.makeText(getActivity(), "Чтобы иметь возможность воспользоваться "+
+                                " данной компонентой, вам необходимо авторизвоваться", Toast.LENGTH_SHORT).show();
+                        FragmentTransaction fTrans = getFragmentManager().beginTransaction();
+                        fTrans.replace(R.id.container, new FragmentLogin());
+                        fTrans.commit();
                     }
                 }
                 if (eventAction == MotionEvent.ACTION_DOWN) {
@@ -73,10 +77,10 @@ public class FragmentMakeCall extends Fragment {
                 return true;
             }
         });
-        return inflater.inflate(R.layout.fragment_make_call, container, false);
+        return rootView;
     }
 
-    public void setUserInactive(View view) {
+    public void setUserInactive() {
         MySettings.getMySettings().setUserInactive();
     }
 

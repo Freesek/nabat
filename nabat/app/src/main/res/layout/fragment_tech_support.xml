@@ -1,13 +1,32 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background_color"
     tools:context="com.example.alex.nabat.FragmentTechSupport">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
 
-</FrameLayout>
+
+
+    <EditText
+        android:id="@+id/editText"
+        android:layout_marginTop="100dp"
+        android:layout_width="300dp"
+        android:layout_height="250dp"
+        android:layout_gravity="center"
+        android:background="@android:drawable/editbox_background"
+        android:gravity="left|top" />
+    <Button
+        android:layout_gravity="center_horizontal"
+        android:layout_width="match_parent"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:layout_height="50dp"
+        android:background="#e54848"
+        android:text="ОТПРАВИТЬ"
+        android:id="@+id/send_message_tech_sup"/>
+
+</LinearLayout>
