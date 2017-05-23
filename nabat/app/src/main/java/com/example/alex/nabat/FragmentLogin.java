@@ -94,7 +94,7 @@ public class FragmentLogin extends Fragment implements LoginSocial{
             @Override
             protected void onPostExecute(Integer integer) {
                 super.onPostExecute(integer);
-                if(settings.getToken().length() > 0) {
+                if(settings.getToken() != null) {
                     userLogIn();
                 } else {
                     Toast.makeText(getActivity(), nm.getRegistrationMessage(), Toast.LENGTH_SHORT).show();

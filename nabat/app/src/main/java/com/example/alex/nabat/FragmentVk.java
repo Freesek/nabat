@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.example.alex.nabat.NabatServer.LoginSocial;
 import com.example.alex.nabat.Utils.NabatMessage;
@@ -38,28 +39,6 @@ public class FragmentVk extends Fragment {
             @Override
             public void onClick(View view) {
                 VKSdk.login(fv, sMyScope);
-                VKRequest request = new VKRequest("users.get", VKParameters.from(VKApiConst.FIELDS, "first_name,last_name,contacts"));
-                request.executeSyncWithListener(new VKRequest.VKRequestListener() {
-                    @Override
-                    public void onComplete(VKResponse response) {
-                        NabatMessage.getNabatMessage().setAnswerVK(response.json);
-                    }
-
-                    @Override
-                    public void attemptFailed(VKRequest request, int attemptNumber, int totalAttempts) {
-                        super.attemptFailed(request, attemptNumber, totalAttempts);
-                    }
-
-                    @Override
-                    public void onError(VKError error) {
-                        super.onError(error);
-                    }
-
-                    @Override
-                    public void onProgress(VKRequest.VKProgressType progressType, long bytesLoaded, long bytesTotal) {
-                        super.onProgress(progressType, bytesLoaded, bytesTotal);
-                    }
-                });
             }
         });
         return rootView;
@@ -69,6 +48,7 @@ public class FragmentVk extends Fragment {
         if (!VKSdk.onActivityResult(requestCode, resultCode, data, new VKCallback<VKAccessToken>() {
             @Override
             public void onResult(VKAccessToken res) {
+                vkReqGetData();
                 LoginSocial ls = (LoginSocial) getParentFragment();
                 ls.loginSocial();
             }
@@ -78,5 +58,31 @@ public class FragmentVk extends Fragment {
         })) {
             super.onActivityResult(requestCode, resultCode, data);
         }
+    }
+
+    private void vkReqGetData() {
+        VKRequest request = new VKRequest("users.get", VKParameters.from(VKApiConst.FIELDS, "first_name,last_name,contacts"));
+        request.executeSyncWithListener(new VKRequest.VKRequestListener() {
+            @Override
+            public void onComplete(VKResponse response) {
+                NabatMessage.getNabatMessage().setAnswerVK(response.json);
+                Toast.makeText(getActivity(), "im here", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void attemptFailed(VKRequest request, int attemptNumber, int totalAttempts) {
+                super.attemptFailed(request, attemptNumber, totalAttempts);
+            }
+
+            @Override
+            public void onError(VKError error) {
+                super.onError(error);
+            }
+
+            @Override
+            public void onProgress(VKRequest.VKProgressType progressType, long bytesLoaded, long bytesTotal) {
+                super.onProgress(progressType, bytesLoaded, bytesTotal);
+            }
+        });
     }
 }

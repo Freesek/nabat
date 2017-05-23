@@ -26,7 +26,7 @@
                     android:layout_marginLeft="30dp"
                     android:layout_marginTop="30dp"
                     android:text="@string/step_one"
-                    android:textColor="@color/colorRed"
+                    android:textColor="@color/textRedColor"
                     android:textSize="16sp" />
 
                 <Spinner
@@ -45,7 +45,7 @@
                     android:layout_marginLeft="30dp"
                     android:layout_marginTop="40dp"
                     android:text="@string/step_two"
-                    android:textColor="@color/colorRed"
+                    android:textColor="@color/textRedColor"
                     android:textSize="16sp" />
 
             </LinearLayout>
