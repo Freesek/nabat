@@ -105,7 +105,7 @@ public class FragmentRegistration extends Fragment {
     }
     public void userLogIn() {
         settings.setUserActive();
-        ((ChangeHeader) getActivity()).changeHeaderNavDrawer();
+        ((ChangeHeader) getActivity()).changeHeaderNavDrawer(true);
         fTrans = getFragmentManager().beginTransaction();
         FragmentMakeCall fmc = new FragmentMakeCall();
         fTrans.replace(R.id.container, fmc);

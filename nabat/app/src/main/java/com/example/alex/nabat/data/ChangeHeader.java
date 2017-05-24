@@ -5,5 +5,5 @@ package com.example.alex.nabat.data;
  */
 
 public interface ChangeHeader {
-    void changeHeaderNavDrawer();
+    void changeHeaderNavDrawer(boolean isEnter);
 }

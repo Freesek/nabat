@@ -49,9 +49,8 @@
                 android:layout_marginTop="100dp"
                 android:gravity="center_horizontal|center_vertical"
                 android:text="@string/welcome_text"
-                android:textColor="@color/textRedColor"
+                android:textColor="@color/textColor"
                 android:textSize="18sp" />
         </LinearLayout>
     </RelativeLayout>
-
 </FrameLayout>

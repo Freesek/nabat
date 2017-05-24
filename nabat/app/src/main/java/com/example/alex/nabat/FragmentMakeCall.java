@@ -61,7 +61,7 @@ public class FragmentMakeCall extends Fragment {
                     } else {
                         makeCall.clearAnimation();
                         Toast.makeText(getActivity(), "Чтобы иметь возможность воспользоваться "+
-                                " данной компонентой, вам необходимо авторизвоваться", Toast.LENGTH_SHORT).show();
+                                " данной компонентой, вам необходимо авторизоваться", Toast.LENGTH_SHORT).show();
                         FragmentTransaction fTrans = getFragmentManager().beginTransaction();
                         fTrans.replace(R.id.container, new FragmentLogin());
                         fTrans.commit();

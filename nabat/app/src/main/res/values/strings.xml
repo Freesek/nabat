@@ -300,4 +300,5 @@
     <string name="enter">Войти</string>
     <string name="set_password">ПАРОЛЬ*</string>
     <string name="about_nabat_sup1">Система «Набат» создана при поддержке</string>
+    <string name="region_text">Регион</string>
 </resources>

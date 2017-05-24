@@ -81,7 +81,7 @@ public class FragmentLogin extends Fragment implements LoginSocial{
         settings.setUserActive();
         Toast.makeText(getActivity(), nm.getAnswerVK(), Toast.LENGTH_LONG).show();
         settings.setDataForHeader(nm.getLastName() + " " + nm.getFirstName(), nm.getEmail());
-        ((ChangeHeader) getActivity()).changeHeaderNavDrawer();
+        ((ChangeHeader) getActivity()).changeHeaderNavDrawer(true);
         fTrans = getFragmentManager().beginTransaction();
         FragmentMakeCall fmc = new FragmentMakeCall();
         fTrans.replace(R.id.container, fmc);

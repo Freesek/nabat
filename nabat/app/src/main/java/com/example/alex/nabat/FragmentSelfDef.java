@@ -38,7 +38,6 @@ public class FragmentSelfDef extends Fragment {
         final FragmentStepTwo fsTwo = new FragmentStepTwo();
         final FragmentStepThree fsThree = new FragmentStepThree();
         final FragmentStepFour fsFour = new FragmentStepFour();
-        final FragmentStepFive fsFive = new FragmentStepFive();
         //FragmentTransaction fTrans = getChildFragmentManager().beginTransaction();
         spinner.setOnItemSelectedListener(new Spinner.OnItemSelectedListener() {
             @Override
@@ -59,10 +58,6 @@ public class FragmentSelfDef extends Fragment {
                     }
                     case 3 : {
                         fTrans.replace(R.id.container_self_def, fsFour);
-                        break;
-                    }
-                    case 4 : {
-                        fTrans.replace(R.id.container_self_def, fsFive);
                         break;
                     }
                 }

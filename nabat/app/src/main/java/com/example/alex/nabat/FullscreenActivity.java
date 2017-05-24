@@ -60,7 +60,7 @@ public class FullscreenActivity extends AppCompatActivity implements NavigationV
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         if(settings.isUserActive()) {
-            changeHeaderNavDrawer();
+            changeHeaderNavDrawer(true);
         }
         fragmentSelfDef = new FragmentSelfDef();
         if(settings.isUserActive()) {
@@ -104,6 +104,7 @@ public class FullscreenActivity extends AppCompatActivity implements NavigationV
             }
             case R.id.exit : {
                 settings.setUserInactive();
+                changeHeaderNavDrawer(false);
                 LogoutDialog lg = new LogoutDialog();
                 lg.show(getSupportFragmentManager(), "logoutDialog");
                 break;
@@ -132,12 +133,18 @@ public class FullscreenActivity extends AppCompatActivity implements NavigationV
     }
 
     @Override
-    public void changeHeaderNavDrawer() {
+    public void changeHeaderNavDrawer(boolean isEnter) {
+
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         View navView =  navigationView.getHeaderView(0);
         TextView name = (TextView)navView.findViewById(R.id.header_name);
         TextView email = (TextView)navView.findViewById(R.id.header_email);
-        name.setText(settings.getName());
-        email.setText(settings.getEmail());
+        if(isEnter) {
+            name.setText(settings.getName());
+            email.setText(settings.getEmail());
+        } else {
+            name.setText("Набат");
+            email.setText("your@email");
+        }
     }
 }
