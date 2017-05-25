@@ -70,7 +70,7 @@ public class FragmentRegistration extends Fragment {
                 } else if(email.getText().length() == 0) {
                     error += "Необходимо ввести email; ";
                 } else if(password.getText().length() == 0) {
-                    error += "Необходимо ввести ваш новый пароль;";
+                    error += "Необходимо ввести ваш пароль;";
                 }
                 if(error.length() == 0) {
                     String[] array = name.getText().toString().split(" ");
@@ -93,6 +93,7 @@ public class FragmentRegistration extends Fragment {
                             super.onPostExecute(integer);
                             if(settings.getToken().length() > 0) {
                                 userLogIn();
+                                Toast.makeText(getActivity(), "Спасибо за регистрацию в системе \"Набат\"", Toast.LENGTH_SHORT).show();
                             } else {
                                 Toast.makeText(getActivity(), nm.getNabatMessage().getError(), Toast.LENGTH_SHORT).show();
                             }

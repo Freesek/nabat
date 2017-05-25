@@ -19,6 +19,7 @@ import android.widget.TextView;
 import com.example.alex.nabat.Utils.LogoutDialog;
 import com.example.alex.nabat.data.ChangeHeader;
 import com.example.alex.nabat.data.MySettings;
+import com.facebook.login.LoginManager;
 
 
 public class FullscreenActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, ChangeHeader{
@@ -107,6 +108,7 @@ public class FullscreenActivity extends AppCompatActivity implements NavigationV
                 changeHeaderNavDrawer(false);
                 LogoutDialog lg = new LogoutDialog();
                 lg.show(getSupportFragmentManager(), "logoutDialog");
+                LoginManager.getInstance().logOut();
                 break;
             }
         }
