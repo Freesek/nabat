@@ -60,8 +60,8 @@ public class FragmentMakeCall extends Fragment {
                         }
                     } else {
                         makeCall.clearAnimation();
-                        Toast.makeText(getActivity(), "Чтобы иметь возможность воспользоваться "+
-                                " данной компонентой, вам необходимо авторизоваться", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), "Чтобы позвонить на горячую линию " +
+                                "Вам необходимо авторизоваться ", Toast.LENGTH_SHORT).show();
                         FragmentTransaction fTrans = getFragmentManager().beginTransaction();
                         fTrans.replace(R.id.container, new FragmentLogin());
                         fTrans.commit();

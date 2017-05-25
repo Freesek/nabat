@@ -17,7 +17,15 @@ public class ErrorParser {
         String userError = null;
         switch (mHttpCode) {
             case 400 : {
+                if(mErrorMessage.contains("Field region has wrong value")) {
+                    return "";
+                } else if (mErrorMessage.contains("Field inn has wrong value")) {
+                    return "";
+                } else if (mErrorMessage.contains("Field lastName has wrong value")) {
 
+                } else if (mErrorMessage.contains("Field firstName has wrong value")) {
+
+                }
             }
         }
         return userError;
