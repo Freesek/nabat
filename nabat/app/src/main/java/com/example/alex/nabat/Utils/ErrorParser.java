@@ -13,20 +13,33 @@ public class ErrorParser {
         this.mHttpCode = httpCode;
     }
 
-    public String getTextForUser() {
-        String userError = null;
+    public String getTextErrorForUser() {
+        String userError = "";
         switch (mHttpCode) {
             case 400 : {
                 if(mErrorMessage.contains("Field region has wrong value")) {
-                    return "";
-                } else if (mErrorMessage.contains("Field inn has wrong value")) {
-                    return "";
-                } else if (mErrorMessage.contains("Field lastName has wrong value")) {
-
-                } else if (mErrorMessage.contains("Field firstName has wrong value")) {
+                    userError += "Неверное значение в поле Регион; ";
+                }
+                if(mErrorMessage.contains("Field inn has wrong value")) {
+                    userError += "ИНН должен состоять из 10 цифр; ";
+                }
+                if (mErrorMessage.contains("Field email has wrong value")) {
+                    userError += "В поле EMAIL должна быть указана существующая почта; ";
+                }
+                if (mErrorMessage.contains("")) {
 
                 }
+                break;
             }
+            case 409 : {
+
+                break;
+            }
+            case 401 : {
+                userError += "";
+                break;
+            }
+            default:userError+="Неизвестная ошибка сервера, обратитесь в службу поддержки!";
         }
         return userError;
     }

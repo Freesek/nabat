@@ -4,6 +4,7 @@ import android.util.Base64;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.example.alex.nabat.Utils.ErrorParser;
 import com.example.alex.nabat.Utils.NabatMessage;
 import com.example.alex.nabat.data.MySettings;
 import com.facebook.Profile;
@@ -73,7 +74,7 @@ public class Connection {
                 }
                 br.close();
                 obj = new JSONObject(sb);
-                if(obj.has("token")) {
+                if (obj.has("token")) {
                     ms.putToken(obj.getString("token"));
                     Log.d("token", ms.getToken());
                 } else {
@@ -87,14 +88,12 @@ public class Connection {
                     sb = line + "\n";
                 }
                 obj = new JSONObject(sb);
-                if(HttpResult == 401) {
-                    if(obj.has("message")) {
-                        String errorMessage = obj.getString("message").equals("Bad credentials") ? "Введены неверные данные, попробуйте еще раз" : "Неивзестная ошибка сервера";
-                        setError(errorMessage);
-                    }
-                }
+                String errorMessage = (new ErrorParser(obj.getString("message"), HttpResult)).getTextErrorForUser();
+                Log.d("error111", errorMessage);
+                setError(errorMessage);
             }
         } catch (Exception e) {
+
         }
     }
 

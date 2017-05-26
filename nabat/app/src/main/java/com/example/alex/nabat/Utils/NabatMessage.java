@@ -21,6 +21,7 @@ public final class NabatMessage {
     private String email;
     private String phoneNumber;
     private String error;
+    private Integer region;
     private String companyName;
     private String companyINN;
     private JSONObject answerFB;
@@ -54,6 +55,11 @@ public final class NabatMessage {
         this.password = password;
     }
 
+    public void setRegion(Integer region) {
+        this.region = region;
+    }
+
+
     public String getAnswerVK() {
         if(answerVK != null) {
             return answerVK.toString();
@@ -64,12 +70,8 @@ public final class NabatMessage {
     public String getRegistrationMessage() {
         message = new JSONObject();
         try {
-            if(firstName != null)
-                message.put("firstName", firstName);
-            if(lastName != null)
-                message.put("lastName", lastName);
-            if(middleName != null)
-                message.put("middleName", middleName);
+            if(name != null)
+                message.put("name", name);
             if(email != null)
                 message.put("email", email);
             if(companyName != null)
@@ -80,6 +82,8 @@ public final class NabatMessage {
                 message.put("phone", phoneNumber);
             if(password != null)
                 message.put("password", password);
+            if(region != null)
+                message.put("region", region);
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -90,11 +94,7 @@ public final class NabatMessage {
         if(answerFB != null) {
             try {
                 if(answerFB.has("name")) {
-                    String[] array = answerFB.getString("name").split(" ");
-                    if(array.length > 1) {
-                        firstName = array[0];
-                        lastName = array[1];
-                    }
+                    name = answerFB.getString("name");
                 }
                 if(answerFB.has("email")) {
                     email = answerFB.getString("email");
@@ -113,12 +113,13 @@ public final class NabatMessage {
                     answerVK = answerVK.getJSONArray("response").optJSONObject(0);
                 }
                 if(answerVK.has("first_name")) {
+                    name = "";
                     firstName = answerVK.getString("first_name");
-                    Log.d("first_name", firstName);
+                    name += firstName;
                 }
                 if(answerVK.has("last_name")) {
                     lastName = answerVK.getString("last_name");
-                    Log.d("last_name", lastName);
+                    name += " " + lastName;
                 }
                 if(answerVK.has("contacts")) {
                     if(answerVK.getJSONObject("contacts").has("mobile_phone")) {

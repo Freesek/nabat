@@ -13,7 +13,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.example.alex.nabat.Utils.LogoutDialog;
@@ -146,7 +148,7 @@ public class FullscreenActivity extends AppCompatActivity implements NavigationV
             email.setText(settings.getEmail());
         } else {
             name.setText("Набат");
-            email.setText("your@email");
+            email.setText("info@nabatforum.ru");
         }
     }
 }

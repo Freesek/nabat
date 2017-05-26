@@ -57,6 +57,11 @@ public class FragmentLogin extends Fragment implements LoginSocial{
                             if(settings.getToken().length() > 0) {
                                 userLogIn();
                             } else {
+                                try{
+                                    wait(1000);
+                                } catch (Exception e) {
+
+                                }
                                 Toast.makeText(getActivity(), nm.getNabatMessage().getError(), Toast.LENGTH_SHORT).show();
                             }
                         }
@@ -80,7 +85,7 @@ public class FragmentLogin extends Fragment implements LoginSocial{
     public void userLogIn() {
         settings.setUserActive();
         Toast.makeText(getActivity(), nm.getAnswerVK(), Toast.LENGTH_LONG).show();
-        settings.setDataForHeader(nm.getLastName() + " " + nm.getFirstName(), nm.getEmail());
+        settings.setDataForHeader(nm.getName(), nm.getEmail());
         ((ChangeHeader) getActivity()).changeHeaderNavDrawer(true);
         fTrans = getFragmentManager().beginTransaction();
         FragmentMakeCall fmc = new FragmentMakeCall();

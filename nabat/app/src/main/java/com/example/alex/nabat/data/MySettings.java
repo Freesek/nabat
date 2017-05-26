@@ -39,7 +39,7 @@ public class MySettings {
         return settings.getString("name", "Nabat");
     }
     public String getEmail() {
-        return settings.getString("email", "");
+        return settings.getString("email", "info@nabatforum.ru");
     }
 
     public void putToken(String token) {

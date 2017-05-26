@@ -13,11 +13,10 @@
     <string name="dummy_content">DUMMY\nCONTENT</string>
     <string name="title_activity_register">register</string>
     <string name="fio">ФИО*</string>
-    <string name="company">НАИМЕНОВАНИЕ КОМПАНИИ*</string>
-    <string name="region_">РЕГИОН</string>
-    <string name="companyINN">ИНН*</string>
+    <string name="company">НАИМЕНОВАНИЕ КОМПАНИИ</string>
+    <string name="companyINN">ИНН</string>
     <string name="email">ЭЛЕКТРОННАЯ ПОЧТА*</string>
-    <string name="phone_num">НОМЕР ТЕЛЕФОНА*</string>
+    <string name="phone_num">НОМЕР ТЕЛЕФОНА</string>
     <string name="login_str">ВХОД</string>
     <string name="none">none</string>
     <string name="none_str">none</string>
@@ -77,7 +76,8 @@
         <item>Республика Тыва</item>
         <item>Удмуртская Республика</item>
         <item>Республика Хакасия</item>
-        <item>Чувашская Республика</item>
+        <item>Чеченская Республика</item>
+        <item>Чувашская Республика - Чувашия</item>
         <item>Алтайский край</item>
         <item>Краснодарский край</item>
         <item>Красноярский край</item>
@@ -141,7 +141,6 @@
         <item>Чукотский автономный округ</item>
         <item>Республика Крым        </item>
         <item>г. Севастополь</item>
-        <item>Чеченская Республика</item>
     </string-array>
 
     <string-array name="steps">
@@ -300,5 +299,5 @@
     <string name="enter">Войти</string>
     <string name="set_password">ПАРОЛЬ*</string>
     <string name="about_nabat_sup1">Система «Набат» создана при поддержке</string>
-    <string name="region_text">Регион</string>
+    <string name="region_text">РЕГИОН*</string>
 </resources>
