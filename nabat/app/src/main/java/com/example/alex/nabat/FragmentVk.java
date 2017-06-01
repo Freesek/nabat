@@ -8,7 +8,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
+
 import com.example.alex.nabat.NabatServer.LoginSocial;
+import com.example.alex.nabat.Utils.NabatConnection;
 import com.example.alex.nabat.Utils.NabatMessage;
 import com.vk.sdk.VKAccessToken;
 import com.vk.sdk.VKCallback;
@@ -37,7 +40,11 @@ public class FragmentVk extends Fragment {
         vkAuth.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                VKSdk.login(fv, sMyScope);
+                if(((NabatConnection) getActivity()).isOnline()) {
+                    VKSdk.login(fv, sMyScope);
+                } else {
+                    Toast.makeText(getContext(), "Отсутствует интернет соединение", Toast.LENGTH_LONG).show();
+                }
             }
         });
         return rootView;

@@ -18,6 +18,7 @@ import android.widget.Toast;
 import com.example.alex.nabat.NabatServer.Connection;
 import com.example.alex.nabat.NabatServer.LoginSocial;
 import com.example.alex.nabat.NabatServer.NabatConnect;
+import com.example.alex.nabat.Utils.NabatConnection;
 import com.example.alex.nabat.Utils.NabatMessage;
 import com.example.alex.nabat.data.ChangeHeader;
 import com.example.alex.nabat.data.MySettings;
@@ -49,23 +50,27 @@ public class FragmentLogin extends Fragment implements LoginSocial{
             @Override
             public void onClick(View view) {
                 hideSoftKeyboard(getActivity());
-                if(login.getText().length() == 0) {
-                    Toast.makeText(rootView.getContext(), "Введите ваш email", Toast.LENGTH_SHORT).show();
-                } else if(password.getText().length() == 0) {
-                    Toast.makeText(rootView.getContext(), "Введите пароль", Toast.LENGTH_SHORT).show();
-                } else {
-                    String line = login.getText() + ":" + password.getText();
-                    new NabatConnect(getActivity(), line, Connection.CallBackType.Login) {
-                        @Override
-                        protected void onPostExecute(Integer integer) {
-                            super.onPostExecute(integer);
-                            if(settings.getToken().length() > 0) {
-                                userLogIn();
-                            } else {
-                                Toast.makeText(getActivity(), nm.getError(), Toast.LENGTH_LONG).show();
+                if(((NabatConnection) getActivity()).isOnline()) {
+                    if (login.getText().length() == 0) {
+                        Toast.makeText(rootView.getContext(), "Введите ваш email", Toast.LENGTH_SHORT).show();
+                    } else if (password.getText().length() == 0) {
+                        Toast.makeText(rootView.getContext(), "Введите пароль", Toast.LENGTH_SHORT).show();
+                    } else {
+                        String line = login.getText() + ":" + password.getText();
+                        new NabatConnect(getActivity(), line, Connection.CallBackType.Login) {
+                            @Override
+                            protected void onPostExecute(Integer integer) {
+                                super.onPostExecute(integer);
+                                if (settings.getToken().length() > 0) {
+                                    userLogIn();
+                                } else {
+                                    Toast.makeText(getActivity(), nm.getError() + "123123", Toast.LENGTH_LONG).show();
+                                }
                             }
-                        }
-                    }.execute();
+                        }.execute();
+                    }
+                } else {
+                    Toast.makeText(getContext(), "Отсутствует интернет соединение", Toast.LENGTH_LONG).show();
                 }
             }
         });

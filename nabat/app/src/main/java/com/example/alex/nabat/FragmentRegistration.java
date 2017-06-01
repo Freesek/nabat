@@ -19,6 +19,7 @@ import android.widget.Toast;
 import com.example.alex.nabat.NabatServer.Connection;
 import com.example.alex.nabat.NabatServer.LoginSocial;
 import com.example.alex.nabat.NabatServer.NabatConnect;
+import com.example.alex.nabat.Utils.NabatConnection;
 import com.example.alex.nabat.Utils.NabatMessage;
 import com.example.alex.nabat.data.ChangeHeader;
 import com.example.alex.nabat.data.MySettings;
@@ -88,36 +89,40 @@ public class FragmentRegistration extends Fragment {
             @Override
             public void onClick(View view) {
                 hideSoftKeyboard(getActivity());
-                String error = "";
-                if(name.getText().length() == 0) {
-                    error += "Необходимо ввести ФИО; ";
-                } else if(email.getText().length() == 0) {
-                    error += "Необходимо ввести email; ";
-                } else if(password.getText().length() == 0) {
-                    error += "Необходимо ввести ваш пароль;";
-                }
-                if(error.length() == 0) {
-                    nm.setName(name.getText().toString());
-                    nm.setCompanyINN(inn.getText().toString());
-                    nm.setPhoneNumber(phone.getText().toString());
-                    nm.setCompanyName(companyName.getText().toString());
-                    nm.setEmail(email.getText().toString());
-                    nm.setPassword(password.getText().toString());
-                    nm.setRegion(region_num);
-                    new NabatConnect(getActivity(), nm.getRegistrationMessage(), Connection.CallBackType.Register) {
-                        @Override
-                        protected void onPostExecute(Integer integer) {
-                            super.onPostExecute(integer);
-                            if(settings.getToken().length() > 0) {
-                                Toast.makeText(getActivity(), "Спасибо за регистрацию в системе \"Набат\"", Toast.LENGTH_SHORT).show();
-                                userLogIn();
-                            } else {
-                                Toast.makeText(getActivity(), nm.getNabatMessage().getError(), Toast.LENGTH_SHORT).show();
+                if(((NabatConnection) getActivity()).isOnline()) {
+                    String error = "";
+                    if (name.getText().length() == 0) {
+                        error += "Необходимо ввести ФИО; ";
+                    } else if (email.getText().length() == 0) {
+                        error += "Необходимо ввести email; ";
+                    } else if (password.getText().length() == 0) {
+                        error += "Необходимо ввести ваш пароль;";
+                    }
+                    if (error.length() == 0) {
+                        nm.setName(name.getText().toString());
+                        nm.setCompanyINN(inn.getText().toString());
+                        nm.setPhoneNumber(phone.getText().toString());
+                        nm.setCompanyName(companyName.getText().toString());
+                        nm.setEmail(email.getText().toString());
+                        nm.setPassword(password.getText().toString());
+                        nm.setRegion(region_num);
+                        new NabatConnect(getActivity(), nm.getRegistrationMessage(), Connection.CallBackType.Register) {
+                            @Override
+                            protected void onPostExecute(Integer integer) {
+                                super.onPostExecute(integer);
+                                if (settings.getToken().length() > 0) {
+                                    Toast.makeText(getActivity(), "Спасибо за регистрацию в системе \"Набат\"", Toast.LENGTH_SHORT).show();
+                                    userLogIn();
+                                } else {
+                                    Toast.makeText(getActivity(), nm.getNabatMessage().getError(), Toast.LENGTH_SHORT).show();
+                                }
                             }
-                        }
-                    }.execute();
+                        }.execute();
+                    } else {
+                        Toast.makeText(getActivity(), error, Toast.LENGTH_LONG).show();
+                    }
                 } else {
-                    Toast.makeText(getActivity(), error, Toast.LENGTH_LONG).show();
+                    Toast.makeText(getContext(), "Отсутствует интернет соединение", Toast.LENGTH_LONG).show();
                 }
             }
         });

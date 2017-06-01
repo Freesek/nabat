@@ -2,6 +2,9 @@ package com.example.alex.nabat;
 
 import android.app.Activity;
 import android.app.FragmentTransaction;
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -15,18 +18,16 @@ import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.example.alex.nabat.Utils.LogoutDialog;
+import com.example.alex.nabat.Utils.NabatConnection;
 import com.example.alex.nabat.data.ChangeHeader;
 import com.example.alex.nabat.data.MySettings;
-import com.facebook.login.LoginManager;
 
 
-public class FullscreenActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, ChangeHeader{
+public class FullscreenActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, ChangeHeader, NabatConnection {
     private static final int REQUEST_CALL = 1;
     public Button makeCall;
     public MySettings settings;
@@ -158,5 +159,15 @@ public class FullscreenActivity extends AppCompatActivity implements NavigationV
                         Activity.INPUT_METHOD_SERVICE);
         inputMethodManager.hideSoftInputFromWindow(
                 activity.getCurrentFocus().getWindowToken(), 0);
+    }
+
+    public boolean isOnline() {
+        ConnectivityManager cm =
+                (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo netInfo = cm.getActiveNetworkInfo();
+        if(netInfo != null) {
+
+        }
+        return false;
     }
 }

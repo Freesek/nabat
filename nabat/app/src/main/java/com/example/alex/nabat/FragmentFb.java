@@ -8,9 +8,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.example.alex.nabat.NabatServer.LoginSocial;
 import com.example.alex.nabat.Utils.NabatMessage;
+import com.example.alex.nabat.Utils.NabatConnection;
 import com.example.alex.nabat.data.MySettings;
 import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
@@ -53,7 +55,11 @@ public class FragmentFb extends Fragment {
         fbAuth.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                fbButton.performClick();
+                if(((NabatConnection) getActivity()).isOnline()) {
+                    fbButton.performClick();
+                } else {
+                    Toast.makeText(getContext(), "Отсутствует интернет соединение", Toast.LENGTH_LONG).show();
+                }
             }
         });
         fbButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {

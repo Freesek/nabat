@@ -133,9 +133,10 @@ public class Connection {
                 String errorMessage = (new ErrorParser(obj.getString("message"), HttpResult)).getTextErrorForUser();
                 Log.d("error111", obj.getString("message"));
                 setError(errorMessage);
+                Log.d("hz", errorMessage);
             }
         } catch (Exception e) {
-
+            Log.d("exception", e.toString());
         }
     }
 
