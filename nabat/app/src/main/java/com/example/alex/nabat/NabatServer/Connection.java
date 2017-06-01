@@ -16,6 +16,15 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.security.cert.CertificateException;
+import java.security.cert.X509Certificate;
+
+import javax.net.ssl.HostnameVerifier;
+import javax.net.ssl.HttpsURLConnection;
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.SSLSession;
+import javax.net.ssl.TrustManager;
+import javax.net.ssl.X509TrustManager;
 
 /**
  * Created by al on 04.09.16.
@@ -25,6 +34,7 @@ import java.net.URL;
 public class Connection {
 
     MySettings ms = MySettings.getMySettings();
+    NabatMessage nm = NabatMessage.getNabatMessage();
 
     public enum CallBackType {
         Login,
@@ -48,7 +58,35 @@ public class Connection {
     private synchronized void doGetRequest(final String a_url, final CallBackType tp, final String data) {
         JSONObject obj = null;
         try {
-            String url = "http://104.236.23.64/receiver" + a_url;
+            TrustManager[] trustAllCerts = new TrustManager[]{
+                    new X509TrustManager() {
+                        @Override
+                        public void checkClientTrusted(X509Certificate[] x509Certificates, String s) throws CertificateException {
+
+                        }
+                        @Override
+                        public void checkServerTrusted(X509Certificate[] x509Certificates, String s) throws CertificateException {
+
+                        }
+                        @Override
+                        public X509Certificate[] getAcceptedIssuers() {
+                            return null;
+                        }
+                    }
+            };
+            SSLContext sc = SSLContext.getInstance("SSL");
+            sc.init(null, trustAllCerts, new java.security.SecureRandom());
+            HttpsURLConnection.setDefaultSSLSocketFactory(sc.getSocketFactory());
+
+            HostnameVerifier nabatHost = new HostnameVerifier() {
+                public boolean verify(String hostname, SSLSession session) {
+                    if(hostname.equals("receive.nabat24.ru") || hostname.equals("api.vk.com") || hostname.equals("graph.facebook.com"))
+                        return true;
+                    return false;
+                }
+            };
+            HttpsURLConnection.setDefaultHostnameVerifier(nabatHost);
+            String url = "https://receive.nabat24.ru" + a_url;
             URL object = new URL(url);
             HttpURLConnection con = (HttpURLConnection) object.openConnection();
             con.setRequestProperty("Content-Type", "application/json;charset=UTF8");
@@ -76,6 +114,10 @@ public class Connection {
                 obj = new JSONObject(sb);
                 if (obj.has("token")) {
                     ms.putToken(obj.getString("token"));
+                    if(tp.equals(CallBackType.Login)) {
+                        nm.setName(obj.getString("name"));
+                        nm.setEmail(obj.getString("email"));
+                    }
                     Log.d("token", ms.getToken());
                 } else {
                     ms.putToken("");
@@ -89,7 +131,7 @@ public class Connection {
                 }
                 obj = new JSONObject(sb);
                 String errorMessage = (new ErrorParser(obj.getString("message"), HttpResult)).getTextErrorForUser();
-                Log.d("error111", errorMessage);
+                Log.d("error111", obj.getString("message"));
                 setError(errorMessage);
             }
         } catch (Exception e) {

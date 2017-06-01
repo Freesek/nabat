@@ -3,10 +3,10 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#F44336</color>
-    <color name="toolBarColor">#9E9E9E</color>
-    <color name="textColor">#212121</color>
+    <color name="toolBarColor">#F44336</color>
+    <color name="textColor">#EF5350</color>
 
     <color name="black_overlay">#66000000</color>
     <color name="background_color">#FAFAFA</color>
-    <color name="buttonColor">#757575</color>
+    <color name="buttonColor">#E53935</color>
 </resources>

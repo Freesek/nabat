@@ -12,6 +12,7 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:theme="@style/ThemeOverlay.AppCompat.Dark"
     android:weightSum="1">
+
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="214dp"
@@ -32,6 +33,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="#000"
-        android:text="your@email"
+        android:text="info@nabat24.ru"
         android:layout_weight="0.02" />
 </LinearLayout>

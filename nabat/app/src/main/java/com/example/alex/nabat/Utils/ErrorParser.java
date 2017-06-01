@@ -26,17 +26,16 @@ public class ErrorParser {
                 if (mErrorMessage.contains("Field email has wrong value")) {
                     userError += "В поле EMAIL должна быть указана существующая почта; ";
                 }
-                if (mErrorMessage.contains("")) {
-
-                }
                 break;
             }
             case 409 : {
-
+                if(mErrorMessage.contains("User with email")) {
+                    userError += "Пользователь с такой почтой уже зарегистрирован";
+                }
                 break;
             }
             case 401 : {
-                userError += "";
+                userError += "Неверные почта/пароль";
                 break;
             }
             default:userError+="Неизвестная ошибка сервера, обратитесь в службу поддержки!";

@@ -1,12 +1,16 @@
 package com.example.alex.nabat;
 
 
+import android.app.Activity;
 import android.app.FragmentTransaction;
+import android.content.Context;
 import android.os.Bundle;
 import android.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -44,6 +48,7 @@ public class FragmentLogin extends Fragment implements LoginSocial{
         enter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                hideSoftKeyboard(getActivity());
                 if(login.getText().length() == 0) {
                     Toast.makeText(rootView.getContext(), "Введите ваш email", Toast.LENGTH_SHORT).show();
                 } else if(password.getText().length() == 0) {
@@ -57,12 +62,7 @@ public class FragmentLogin extends Fragment implements LoginSocial{
                             if(settings.getToken().length() > 0) {
                                 userLogIn();
                             } else {
-                                try{
-                                    wait(1000);
-                                } catch (Exception e) {
-
-                                }
-                                Toast.makeText(getActivity(), nm.getNabatMessage().getError(), Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getActivity(), nm.getError(), Toast.LENGTH_LONG).show();
                             }
                         }
                     }.execute();
@@ -82,9 +82,16 @@ public class FragmentLogin extends Fragment implements LoginSocial{
         return rootView;
     }
 
+    public static void hideSoftKeyboard(Activity activity) {
+        InputMethodManager inputMethodManager =
+                (InputMethodManager) activity.getSystemService(
+                        Activity.INPUT_METHOD_SERVICE);
+        inputMethodManager.hideSoftInputFromWindow(
+                activity.getCurrentFocus().getWindowToken(), 0);
+    }
+
     public void userLogIn() {
         settings.setUserActive();
-        Toast.makeText(getActivity(), nm.getAnswerVK(), Toast.LENGTH_LONG).show();
         settings.setDataForHeader(nm.getName(), nm.getEmail());
         ((ChangeHeader) getActivity()).changeHeaderNavDrawer(true);
         fTrans = getFragmentManager().beginTransaction();
@@ -102,7 +109,7 @@ public class FragmentLogin extends Fragment implements LoginSocial{
                 if(settings.getToken() != null) {
                     userLogIn();
                 } else {
-                    Toast.makeText(getActivity(), nm.getRegistrationMessage(), Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(getActivity(), nm.getRegistrationMessage(), Toast.LENGTH_SHORT).show();
                 }
             }
         }.execute();

@@ -28,7 +28,6 @@ import com.example.alex.nabat.data.MySettings;
 public class FragmentMakeCall extends Fragment {
 
     Button makeCall;
-    Button loginButton;
     public MySettings settings;
     private static final int REQUEST_CALL = 1;
 

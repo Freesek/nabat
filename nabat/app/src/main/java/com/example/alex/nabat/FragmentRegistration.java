@@ -1,12 +1,14 @@
 package com.example.alex.nabat;
 
 
+import android.app.Activity;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -57,11 +59,19 @@ public class FragmentRegistration extends Fragment {
                 R.array.planets_array, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
-        spinner.setSelection(83);
+        spinner.setSelection(76);
         spinner.setOnItemSelectedListener(new Spinner.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                region_num = position + 1;
+                if(position < 80) {
+                    region_num = position + 1;
+                } else if(position < 83) {
+                    region_num = position + 4;
+                } else if(position < 86) {
+                    region_num = position + 6;
+                } else {
+                    region_num = position + 8;
+                }
             }
             public void onNothingSelected(AdapterView<?> parent) {
                 // Another interface callback
@@ -77,6 +87,7 @@ public class FragmentRegistration extends Fragment {
         sendData.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                hideSoftKeyboard(getActivity());
                 String error = "";
                 if(name.getText().length() == 0) {
                     error += "Необходимо ввести ФИО; ";
@@ -112,8 +123,18 @@ public class FragmentRegistration extends Fragment {
         });
         return rootView;
     }
+
+    public static void hideSoftKeyboard(Activity activity) {
+        InputMethodManager inputMethodManager =
+                (InputMethodManager) activity.getSystemService(
+                        Activity.INPUT_METHOD_SERVICE);
+        inputMethodManager.hideSoftInputFromWindow(
+                activity.getCurrentFocus().getWindowToken(), 0);
+    }
+
     public void userLogIn() {
         settings.setUserActive();
+        settings.setDataForHeader(nm.getName(), nm.getEmail());
         ((ChangeHeader) getActivity()).changeHeaderNavDrawer(true);
         fTrans = getFragmentManager().beginTransaction();
         FragmentMakeCall fmc = new FragmentMakeCall();

@@ -16,7 +16,6 @@ public final class NabatMessage {
     private String name;
     private String firstName;
     private String lastName;
-    private String middleName;
     private String password;
     private String email;
     private String phoneNumber;
@@ -47,10 +46,6 @@ public final class NabatMessage {
         this.lastName = lastName;
     }
 
-    public void setMiddleName(String middleName) {
-        this.middleName = middleName;
-    }
-
     public void setPassword(String password) {
         this.password = password;
     }
@@ -76,7 +71,7 @@ public final class NabatMessage {
                 message.put("email", email);
             if(companyName != null)
                 message.put("companyName", companyName);
-            if(companyINN != null)
+            if(!(companyINN == null || companyINN.length() == 0))
                 message.put("inn", companyINN);
             if(phoneNumber != null)
                 message.put("phone", phoneNumber);

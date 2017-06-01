@@ -1,5 +1,6 @@
 package com.example.alex.nabat;
 
+import android.app.Activity;
 import android.app.FragmentTransaction;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -13,6 +14,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
@@ -77,15 +79,13 @@ public class FullscreenActivity extends AppCompatActivity implements NavigationV
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-        if(id == R.id.action_settings) {
-            return true;
-        }
         return super.onOptionsItemSelected(item);
     }
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
+        hideSoftKeyboard(this);
         int id = item.getItemId();
         fTrans = getFragmentManager().beginTransaction();
         switch (id) {
@@ -106,11 +106,11 @@ public class FullscreenActivity extends AppCompatActivity implements NavigationV
                 break;
             }
             case R.id.exit : {
-                settings.setUserInactive();
-                changeHeaderNavDrawer(false);
-                LogoutDialog lg = new LogoutDialog();
-                lg.show(getSupportFragmentManager(), "logoutDialog");
-                LoginManager.getInstance().logOut();
+                if(settings.isUserActive()) {
+                    LogoutDialog lg = new LogoutDialog();
+                    lg.setHeader(this);
+                    lg.show(getSupportFragmentManager(), "logoutDialog");
+                }
                 break;
             }
         }
@@ -148,7 +148,15 @@ public class FullscreenActivity extends AppCompatActivity implements NavigationV
             email.setText(settings.getEmail());
         } else {
             name.setText("Набат");
-            email.setText("info@nabatforum.ru");
+            email.setText("info@nabat24.ru");
         }
+    }
+
+    public static void hideSoftKeyboard(Activity activity) {
+        InputMethodManager inputMethodManager =
+                (InputMethodManager) activity.getSystemService(
+                        Activity.INPUT_METHOD_SERVICE);
+        inputMethodManager.hideSoftInputFromWindow(
+                activity.getCurrentFocus().getWindowToken(), 0);
     }
 }

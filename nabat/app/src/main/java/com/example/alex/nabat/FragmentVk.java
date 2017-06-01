@@ -3,12 +3,11 @@ package com.example.alex.nabat;
 import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.Toast;
-
 import com.example.alex.nabat.NabatServer.LoginSocial;
 import com.example.alex.nabat.Utils.NabatMessage;
 import com.vk.sdk.VKAccessToken;
@@ -65,22 +64,25 @@ public class FragmentVk extends Fragment {
         request.executeSyncWithListener(new VKRequest.VKRequestListener() {
             @Override
             public void onComplete(VKResponse response) {
+                Log.d("hello sooka", "hello1");
                 NabatMessage.getNabatMessage().setAnswerVK(response.json);
-                Toast.makeText(getActivity(), "im here", Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void attemptFailed(VKRequest request, int attemptNumber, int totalAttempts) {
+                Log.d("hello sooka", "hello2");
                 super.attemptFailed(request, attemptNumber, totalAttempts);
             }
 
             @Override
             public void onError(VKError error) {
+                Log.d("hello sooka", error.toString());
                 super.onError(error);
             }
 
             @Override
             public void onProgress(VKRequest.VKProgressType progressType, long bytesLoaded, long bytesTotal) {
+                Log.d("hello sooka", "hello4");
                 super.onProgress(progressType, bytesLoaded, bytesTotal);
             }
         });

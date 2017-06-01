@@ -3,6 +3,7 @@ package com.example.alex.nabat;
 import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -67,6 +68,8 @@ public class FragmentFb extends Fragment {
                                 LoginSocial ls = (LoginSocial) getParentFragment();
                                 ls.loginSocial();
                             }
+
+
                         });
                 Bundle parameters = new Bundle();
                 parameters.putString("fields","id,name,email");
@@ -77,10 +80,12 @@ public class FragmentFb extends Fragment {
             @Override
             public void onCancel() {
                 System.out.println("onCancel");
+                Log.d("Fberror", "hello1");
             }
 
             @Override
             public void onError(FacebookException error) {
+                Log.d("Fberror", error.toString());
             }
 
         });

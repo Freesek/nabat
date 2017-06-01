@@ -3,9 +3,9 @@
 
     <group android:checkableBehavior="none">
         <item
-            android:id="@+id/tech_supp"
-            android:icon="@drawable/ic_tech_sup"
-            android:title="@string/tech_sup" />
+            android:id="@+id/about_nabat"
+            android:icon="@drawable/ic_action_name"
+            android:title="@string/about_nabat" />
         <item
             android:id="@+id/main_screen"
             android:icon="@drawable/ic_hotline"
@@ -15,12 +15,12 @@
             android:icon="@drawable/ic_self_def"
             android:title="@string/self_def" />
         <item
-            android:id="@+id/about_nabat"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="@string/about_nabat" />
+            android:id="@+id/tech_supp"
+            android:icon="@drawable/ic_tech_sup"
+            android:title="@string/tech_sup" />
         <item
             android:id="@+id/exit"
-            android:icon="@drawable/ic_menu_manage"
+            android:icon="@drawable/ic_exit"
             android:title="@string/exit" />
     </group>
 

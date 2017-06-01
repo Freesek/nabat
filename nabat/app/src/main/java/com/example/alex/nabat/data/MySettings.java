@@ -36,10 +36,10 @@ public class MySettings {
     }
 
     public String getName() {
-        return settings.getString("name", "Nabat");
+        return settings.getString("name", "Набат");
     }
     public String getEmail() {
-        return settings.getString("email", "info@nabatforum.ru");
+        return settings.getString("email", "info@nabat24.ru");
     }
 
     public void putToken(String token) {
@@ -55,6 +55,8 @@ public class MySettings {
     public void setUserInactive() {
         editor.putBoolean(APP_PREFERENCES_ACTIVE, false);
         editor.putString(APP_PREFERENCES_TOKEN, "");
+        editor.putString(APP_PREFERENCES_NAME, "");
+        editor.putString(APP_PREFERENCES_EMAIL, "");
         editor.apply();
     }
 
