@@ -162,11 +162,10 @@ public class FullscreenActivity extends AppCompatActivity implements NavigationV
     }
 
     public boolean isOnline() {
-        ConnectivityManager cm =
-                (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo netInfo = cm.getActiveNetworkInfo();
         if(netInfo != null) {
-
+            return true;
         }
         return false;
     }
